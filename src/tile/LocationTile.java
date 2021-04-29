@@ -5,10 +5,10 @@ public class LocationTile extends Tile  {
 	private int owner = 0;
 	private int fallPrice;
 	
-	public LocationTile(String name,int buyprice,int fallprice) {
+	public LocationTile(String name,int buyprice) {
 		super(name);
 		this.buyPrice = buyprice;
-		this.fallPrice = fallprice;
+		this.fallPrice = (int)0.75*buyprice;
 		
 		
 	}

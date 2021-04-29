@@ -2,8 +2,8 @@ package tile;
 
 public class SpacialLocationTile extends LocationTile implements Interactable {
 	
-	public SpacialLocationTile(String name,int buyprice,int fallprice) {
-		super(name,buyprice,fallprice);
+	public SpacialLocationTile(String name,int buyprice) {
+		super(name,buyprice);
 		
 		
 	}
