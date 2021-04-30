@@ -7,5 +7,9 @@ public class Tile{
 		this.name = name;
 	}
 
+	public String getname() {
+		return this.name;
+	}
+
 	
 }

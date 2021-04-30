@@ -20,6 +20,10 @@ public class NormalLocationTile extends LocationTile implements Interactable {
 		
 	}
 	
+	public int getOwner() {
+		return this.owner;
+	}
+	
 	
 
 }

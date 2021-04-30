@@ -1,6 +1,8 @@
 package logic;
 
 import itemcard.ItemCard;
+import tile.LocationTile;
+import tile.Tile;
 
 public class Player {
 	private int playerNumber;
@@ -33,6 +35,14 @@ public class Player {
 		return this.position;
 	}
 	
+	public void buyLocation(LocationTile location) {
+		this.money -= location.getBuyPrice();
+		
+	}
+	
+	public int getMoney(){
+		return this.money;
+	}
 	
 	
 }

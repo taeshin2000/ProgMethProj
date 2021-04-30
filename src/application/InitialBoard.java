@@ -44,5 +44,13 @@ public class InitialBoard {
 		
 		
 	}
+	
+	public String getLocationName(int index) {
+		return tileList.get(index).getname();
+	}
+	
+	public Tile getLocation(int index) {
+		return tileList.get(index);
+	}
 
 }

@@ -13,4 +13,8 @@ public class SpacialLocationTile extends LocationTile implements Interactable {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public int getOwner() {
+		return this.owner;
+	}
 }
