@@ -2,6 +2,7 @@ package logic;
 
 import itemcard.ItemCard;
 import tile.LocationTile;
+import tile.NormalLocationTile;
 import tile.Tile;
 
 public class Player {
@@ -46,6 +47,15 @@ public class Player {
 	
 	public int getMoney(){
 		return this.money;
+	}
+
+	public boolean upgradeLocation(NormalLocationTile normalLocationTile) {
+		if (this.money >= normalLocationTile.getUpgradePrice()) {
+			this.money -= normalLocationTile.getUpgradePrice();
+			return true;
+		}
+		return false;
+		
 	}
 	
 	

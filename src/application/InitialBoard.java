@@ -57,5 +57,10 @@ public class InitialBoard {
 	public void setLocationTileOwner(int index,int playerNumber) {
 		((LocationTile)(this.tileList.get(index))).setOwner(playerNumber);
 	}
+	
+
+	public void increaseLocationPrice(int index) {
+		((NormalLocationTile)(this.tileList.get(index))).increasePrice();
+	}
 
 }

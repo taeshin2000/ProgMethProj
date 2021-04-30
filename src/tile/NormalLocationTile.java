@@ -1,8 +1,7 @@
 package tile;
 
-public class NormalLocationTile extends LocationTile implements Interactable {
+public class NormalLocationTile extends LocationTile  {
 	private int upgradePrice;
-	private int houseLevel = 0;
 	private boolean upgraded = false;
 	private int transferPrice;
 	
@@ -14,14 +13,24 @@ public class NormalLocationTile extends LocationTile implements Interactable {
 		
 	}
 
-	@Override
-	public void interact() {
-		// TODO Auto-generated method stub
-		
+	public boolean upgradeable() {
+		return this.upgraded;
 	}
 	
-	public int getOwner() {
-		return this.owner;
+	public void upgrade() {
+		this.upgraded = true;
+	}
+	
+	public int getUpgradePrice() {
+		return upgradePrice;
+	}
+
+	public void increasePrice() {
+		int buyprice = this.getBuyPrice();
+		this.upgradePrice += (int)(0.5*buyprice);
+		this.transferPrice += (int)(0.5*buyprice);
+		this.setFallPrice(this.getFallPrice() + (int)(0.5*buyprice));
+		upgrade();
 	}
 	
 	

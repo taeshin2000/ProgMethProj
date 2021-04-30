@@ -7,7 +7,7 @@ public class LocationTile extends Tile  {
 	
 	public LocationTile(String name,int buyprice) {
 		super(name);
-		this.buyPrice = buyprice;
+		this.setBuyPrice(buyprice);
 		this.fallPrice = (int)0.75*buyprice;
 		
 		
@@ -21,4 +21,19 @@ public class LocationTile extends Tile  {
 		this.owner = playerNumber;
 	}
 	
+	public int getOwner() {
+		return this.owner;
+	}
+
+	public void setBuyPrice(int buyPrice) {
+		this.buyPrice = buyPrice;
+	}
+	
+	public void setFallPrice(int newfallprice) {
+		this.fallPrice = newfallprice;
+	}
+	
+	public int getFallPrice() {
+		return fallPrice;
+	}
 }
