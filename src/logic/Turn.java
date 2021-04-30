@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import application.InitialBoard;
+import application.Main;
 import tile.LocationTile;
 import tile.NormalLocationTile;
 import tile.SpacialLocationTile;
@@ -34,31 +35,47 @@ public class Turn {
 
 	}
 
-	public void action(InitialBoard board) {
+	public void action(InitialBoard board, Player player1, Player player2, boolean gameOver, int winner) {
 		Scanner scanner = new Scanner(System.in);
 		if (board.getTile(currentPlayer.getPosition()) instanceof LocationTile) {
-			if(((LocationTile) (board.getTile(currentPlayer.getPosition()))).getOwner() == 0) {
-				System.out.println("Do you want to buy this location? (y/n)");
-				String buyInput = scanner.nextLine();
-				if(buyInput.equals("y")) {
-					if (currentPlayer.buyLocation(((NormalLocationTile) (board.getTile(currentPlayer.getPosition()))))) {
-						System.out.println("Player" + currentPlayer.getPlayerNumber() + " now own " + board.getLocationName(currentPlayer.getPosition()));
-						System.out.println("Current money is : " + currentPlayer.getMoney());
-						board.setLocationTileOwner(currentPlayer.getPosition(), currentPlayer.getPlayerNumber());
+			if (((LocationTile) (board.getTile(currentPlayer.getPosition()))).getOwner() == 0) {
+				buyLocation(board);
+			} else {
+				if (board.getTile(currentPlayer.getPosition()) instanceof NormalLocationTile) {
+					if (((NormalLocationTile) (board.getTile(currentPlayer.getPosition()))).getOwner() == currentPlayer
+							.getPlayerNumber()
+							&& ((NormalLocationTile) (board.getTile(currentPlayer.getPosition()))).upgradeable()) {
+						upgradeLocation(board);
+					} else {
+						if (((NormalLocationTile) (board.getTile(currentPlayer.getPosition())))
+								.getOwner() != currentPlayer.getPlayerNumber()) {
+							if (currentPlayer.fallOnOtherPlayer(
+									(NormalLocationTile) (board.getTile(currentPlayer.getPosition())))) {
+								fallOnLocation(board, player1, player2);
+								transferLocation(board, player1, player2);
+							} else {
+								Main.setGameOver(true);
+								if (currentPlayer.getPlayerNumber() == 1) {
+									Main.setWinner(2); 
+								} else {
+									Main.setWinner(1);
+								}
+
+							}
+						}
 					}
-				}	
-			}else {
-				if(board.getTile(currentPlayer.getPosition()) instanceof NormalLocationTile) {
-					if(((NormalLocationTile) (board.getTile(currentPlayer.getPosition()))).getOwner() == currentPlayer.getPlayerNumber() && ((NormalLocationTile) (board.getTile(currentPlayer.getPosition()))).upgradeable() ) {
-						System.out.println("Do you want to upgrade this location? (y/n)");
-						String upgradeInput = scanner.nextLine();
-						if(upgradeInput.equals("y")) {
-						
-							if (currentPlayer.upgradeLocation(((NormalLocationTile) (board.getTile(currentPlayer.getPosition()))))){
-								System.out.println(board.getLocationName(currentPlayer.getPosition()) + "upgraded");
-								System.out.println("Current money is : " + currentPlayer.getMoney());
-								board.increaseLocationPrice(currentPlayer.getPosition());
-							
+				} else {
+					if (((NormalLocationTile) (board.getTile(currentPlayer.getPosition()))).getOwner() != currentPlayer
+							.getPlayerNumber()) {
+						if (currentPlayer
+								.fallOnOtherPlayer((SpacialLocationTile) (board.getTile(currentPlayer.getPosition())))) {
+							fallOnLocation(board, player1, player2);
+						} else {
+							Main.setGameOver(true);
+							if (currentPlayer.getPlayerNumber() == 1) {
+								Main.setWinner(2); 
+							} else {
+								Main.setWinner(1);
 							}
 
 						}
@@ -67,9 +84,75 @@ public class Turn {
 			}
 		}
 	}
-		
-		
-		
-		
-	
+
+	public void buyLocation(InitialBoard board) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Do you want to buy this location? (y/n)");
+		String buyInput = scanner.nextLine();
+		if (buyInput.equals("y")) {
+			if (currentPlayer.buyLocation(((LocationTile) (board.getTile(currentPlayer.getPosition()))))) {
+				System.out.println("Player" + currentPlayer.getPlayerNumber() + " now own "
+						+ board.getLocationName(currentPlayer.getPosition()));
+				System.out.println("Current money is : " + currentPlayer.getMoney());
+				board.setLocationTileOwner(currentPlayer.getPosition(), currentPlayer.getPlayerNumber());
+			} else {
+
+				System.out.println("You don't have enough money!!!");
+			}
+		}
+	}
+
+	public void upgradeLocation(InitialBoard board) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Do you want to upgrade this location? (y/n)");
+		String upgradeInput = scanner.nextLine();
+		if (upgradeInput.equals("y")) {
+
+			if (currentPlayer.upgradeLocation(((NormalLocationTile) (board.getTile(currentPlayer.getPosition()))))) {
+				System.out.println(board.getLocationName(currentPlayer.getPosition()) + "upgraded");
+				System.out.println("Current money is : " + currentPlayer.getMoney());
+				board.increaseLocationPrice(currentPlayer.getPosition());
+
+			} else {
+				System.out.println("You don't have enough money!!!");
+			}
+
+		}
+	}
+
+	public void fallOnLocation(InitialBoard board, Player player1, Player player2) {
+		System.out.println("You fall on another player location and lose "
+				+ ((LocationTile) (board.getTile(currentPlayer.getPosition()))).getFallPrice());
+		increaseOtherPlayerMoney(((LocationTile) (board.getTile(currentPlayer.getPosition()))).getFallPrice(), player1,
+				player2);
+	}
+
+	public void increaseOtherPlayerMoney(int amount, Player player1, Player player2) {
+		if (currentPlayer.getPlayerNumber() == 1) {
+			player2.increaseMoney(amount);
+		} else {
+			player1.increaseMoney(amount);
+
+		}
+	}
+
+	public void transferLocation(InitialBoard board, Player player1, Player player2) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Do you want to transfer this loaction to you? (y/n)");
+		String transferInput = scanner.nextLine();
+		if (transferInput.equals("y")) {
+			if (currentPlayer.transferLocation(((NormalLocationTile) (board.getTile(currentPlayer.getPosition()))))) {
+				increaseOtherPlayerMoney(
+						((LocationTile) (board.getTile(currentPlayer.getPosition()))).getTransferPrice(), player1,
+						player2);
+				System.out.println("Player" + currentPlayer.getPlayerNumber() + " now own "
+						+ board.getLocationName(currentPlayer.getPosition()));
+				System.out.println("Current money is : " + currentPlayer.getMoney());
+				board.setLocationTileOwner(currentPlayer.getPosition(), currentPlayer.getPlayerNumber());
+			} else {
+				System.out.println("You don't have enough money!!!");
+			}
+		}
+	}
+
 }

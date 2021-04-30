@@ -2,7 +2,7 @@ package tile;
 
 public class NormalLocationTile extends LocationTile  {
 	private int upgradePrice;
-	private boolean upgraded = false;
+	private boolean upgrade = true;
 	private int transferPrice;
 	
 	public NormalLocationTile(String name,int buyprice) {
@@ -14,11 +14,11 @@ public class NormalLocationTile extends LocationTile  {
 	}
 
 	public boolean upgradeable() {
-		return this.upgraded;
+		return this.upgrade;
 	}
 	
 	public void upgrade() {
-		this.upgraded = true;
+		this.upgrade = false;
 	}
 	
 	public int getUpgradePrice() {
@@ -31,6 +31,10 @@ public class NormalLocationTile extends LocationTile  {
 		this.transferPrice += (int)(0.5*buyprice);
 		this.setFallPrice(this.getFallPrice() + (int)(0.5*buyprice));
 		upgrade();
+	}
+
+	public int getTransferPrice() {
+		return this.transferPrice;
 	}
 	
 	

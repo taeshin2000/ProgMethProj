@@ -58,5 +58,26 @@ public class Player {
 		
 	}
 	
+	public boolean fallOnOtherPlayer(LocationTile location) {
+		if (this.money >= location.getFallPrice()) {
+			this.money -= location.getFallPrice();
+			return true;
+		}
+		return false;
+	}
+
+	public boolean transferLocation(NormalLocationTile normalLocationTile) {
+		if(this.money >= normalLocationTile.getTransferPrice()) {
+			this.money -= normalLocationTile.getTransferPrice();
+			return true;
+		}
+		return false;
+	}
+
+	public void increaseMoney(int amount) {
+		this.money += amount;
+		
+	}
+	
 	
 }
