@@ -35,8 +35,12 @@ public class Player {
 		return this.position;
 	}
 	
-	public void buyLocation(LocationTile location) {
-		this.money -= location.getBuyPrice();
+	public boolean buyLocation(LocationTile location) {
+		if(this.money >= location.getBuyPrice()) {
+			this.money -= location.getBuyPrice();
+			return true;
+		}
+		return false;
 		
 	}
 	

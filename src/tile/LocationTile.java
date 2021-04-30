@@ -17,5 +17,8 @@ public class LocationTile extends Tile  {
 		return this.buyPrice;
 	}
 	
+	public void setOwner(int playerNumber) {
+		this.owner = playerNumber;
+	}
 	
 }

@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import logic.Player;
 import logic.Turn;
+import tile.LocationTile;
 import tile.NormalLocationTile;
 import tile.SpacialLocationTile;
 
@@ -34,34 +35,9 @@ public class Main {
 				System.out.println("Player" + turn.getCurrentPlayer().getPlayerNumber() + " move " + step +" step(s).");
 				System.out.println("Player" + turn.getCurrentPlayer().getPlayerNumber() + " current position is "+ turn.getCurrentPlayer().getPosition());
 				System.out.println("Player" + turn.getCurrentPlayer().getPlayerNumber() + " current location is "+ board.getLocationName(turn.getCurrentPlayer().getPosition()));
-				if(board.getLocation(turn.getCurrentPlayer().getPosition()) instanceof NormalLocationTile) {
-					NormalLocationTile fallNormalLocationTile = (NormalLocationTile) board.getLocation(turn.getCurrentPlayer().getPosition());
-					if(fallNormalLocationTile.getOwner() == 0) {
-						System.out.println("Do you want to buy this location? (y/n)");
-						String buyInput = scanner.nextLine();
-						if(buyInput.equals("y")) {
-							turn.getCurrentPlayer().buyLocation(fallNormalLocationTile);
-							System.out.println("Player" + turn.getCurrentPlayer().getPlayerNumber() + " now own " + board.getLocationName(turn.getCurrentPlayer().getPosition()));
-							System.out.println("Current money is : " + turn.getCurrentPlayer().getMoney());
-						}	
-					}
-					
-				}
-				
-			if (board.getLocation(turn.getCurrentPlayer().getPosition()) instanceof SpacialLocationTile) {
-				SpacialLocationTile fallSpacialLocationTile = (SpacialLocationTile) board.getLocation(turn.getCurrentPlayer().getPosition());
-				if(fallSpacialLocationTile.getOwner() == 0) {
-					System.out.println("Do you want to buy this location? (y/n)");
-					String buyInput = scanner.nextLine();
-					if(buyInput.equals("y")) {
-						turn.getCurrentPlayer().buyLocation(fallSpacialLocationTile);
-						System.out.println("Player" + turn.getCurrentPlayer().getPlayerNumber() + " now own " + board.getLocationName(turn.getCurrentPlayer().getPosition()));
-						System.out.println("Current money is : " + turn.getCurrentPlayer().getMoney());
-					}
-	
-				}
-			}
-				
+				turn.action(board);
+		
+			
 				
 			turn.changeCurrentPlayer(player1,player2);
 			turnCount += 1;

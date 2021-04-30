@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import tile.DoublePriceTile;
 import tile.GetItemTile;
 import tile.JailTile;
+import tile.LocationTile;
 import tile.NormalLocationTile;
 import tile.SpacialLocationTile;
 import tile.StartTile;
@@ -49,8 +50,12 @@ public class InitialBoard {
 		return tileList.get(index).getname();
 	}
 	
-	public Tile getLocation(int index) {
+	public Tile getTile(int index) {
 		return tileList.get(index);
+	}
+	
+	public void setLocationTileOwner(int index,int playerNumber) {
+		((LocationTile)(this.tileList.get(index))).setOwner(playerNumber);
 	}
 
 }
