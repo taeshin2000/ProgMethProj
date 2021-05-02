@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import application.InitialBoard;
 import application.Main;
+import tile.JailTile;
 import tile.LocationTile;
 import tile.NormalLocationTile;
 import tile.SpacialLocationTile;
@@ -66,7 +67,7 @@ public class Turn {
 						}
 					}
 				} else {
-					if (((NormalLocationTile) (board.getTile(currentPlayer.getPosition()))).getOwner() != currentPlayer
+					if (((SpacialLocationTile) (board.getTile(currentPlayer.getPosition()))).getOwner() != currentPlayer
 							.getPlayerNumber()) {
 						if (currentPlayer
 								.fallOnOtherPlayer((SpacialLocationTile) (board.getTile(currentPlayer.getPosition())))) {
@@ -88,6 +89,10 @@ public class Turn {
 		if (board.getTile(currentPlayer.getPosition()) instanceof WarpTile) {
 			((WarpTile) board.getTile(currentPlayer.getPosition())).interact(currentPlayer);
 			
+		}
+		
+		if (board.getTile(currentPlayer.getPosition()) instanceof JailTile){
+			((JailTile) board.getTile(currentPlayer.getPosition())).interact(currentPlayer);
 		}
 	}
 
@@ -178,6 +183,13 @@ public class Turn {
 		
 		
 		
+	}
+
+	public boolean skipNextTurn(Player player) {
+		if ( player.getPosition() == 6) {
+			return true;
+		}
+		return false;
 	}
 
 }

@@ -11,8 +11,7 @@ public class JailTile extends Tile implements Interactable {
 
 	@Override
 	public void interact(Player player) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("You are in jail.Can't move for 1 turn.");	
 	}
 
 }

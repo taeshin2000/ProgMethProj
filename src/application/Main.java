@@ -26,6 +26,7 @@ public class Main {
 		String player2name = scanner.nextLine();
 		player2 = new Player(2, player2name);
 		turn = new Turn(player1);
+		boolean skipTurn = false;
 		while (turnCount < 30) {
 			System.out.println("Current turn is Player" + turn.getCurrentPlayer().getPlayerNumber() + " turn.(Turn "
 					+ (turnCount + 1) + ")");
@@ -46,7 +47,17 @@ public class Main {
 					System.out.println("Player" + winner + " win!!!!");
 					break;
 				}
-				turn.changeCurrentPlayer(player1, player2);
+				Player player = turn.getCurrentPlayer();
+				if (!skipTurn) {
+
+					turn.changeCurrentPlayer(player1, player2);
+
+				} else {
+					skipTurn = false;
+				}
+				if (turn.skipNextTurn(player)) {
+					skipTurn = true;
+				}
 				turnCount += 1;
 
 			}
