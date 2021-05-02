@@ -2,7 +2,7 @@ package logic;
 
 import java.util.Random;
 import java.util.Scanner;
-
+import java.util.ArrayList;
 import application.InitialBoard;
 import application.Main;
 import tile.LocationTile;
@@ -142,6 +142,11 @@ public class Turn {
 		String transferInput = scanner.nextLine();
 		if (transferInput.equals("y")) {
 			if (currentPlayer.transferLocation(((NormalLocationTile) (board.getTile(currentPlayer.getPosition()))))) {
+				if (currentPlayer.getPlayerNumber() == 1) {
+					player2.removeLocation((NormalLocationTile) (board.getTile(currentPlayer.getPosition())));
+				}else {
+					player1.removeLocation((NormalLocationTile) (board.getTile(currentPlayer.getPosition())));
+				}
 				increaseOtherPlayerMoney(
 						((LocationTile) (board.getTile(currentPlayer.getPosition()))).getTransferPrice(), player1,
 						player2);
@@ -153,6 +158,20 @@ public class Turn {
 				System.out.println("You don't have enough money!!!");
 			}
 		}
+	}
+
+	public void checkSpacialWin(InitialBoard board, Player player1, Player player2, boolean gameOver, int winner) {
+		if ((currentPlayer.getSpacialLocationList()).size() == 3) {
+			Main.setGameOver(true);
+			if (currentPlayer.getPlayerNumber() == 1) {
+				Main.setWinner(1);
+			}else {
+				Main.setWinner(2);
+			}
+		}
+		
+		
+		
 	}
 
 }

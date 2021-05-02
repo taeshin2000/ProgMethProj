@@ -41,6 +41,7 @@ public class Main {
 				System.out.println("Player" + turn.getCurrentPlayer().getPlayerNumber() + " current location is "
 						+ board.getLocationName(turn.getCurrentPlayer().getPosition()));
 				turn.action(board, player1, player2, gameOver, winner);
+				turn.checkSpacialWin(board, player1, player2, gameOver, winner);
 				if (gameOver && winner != 0) {
 					System.out.println("Player" + winner + " win!!!!");
 					break;
@@ -50,13 +51,23 @@ public class Main {
 
 			}
 		}
+		if (player1.totalAsset() == player2.totalAsset()) {
+			System.out.println("Spacial ending Tieeee lucky!!!!!");
+		} else {
+			if (player1.totalAsset() > player2.totalAsset()) {
+				System.out.println("Player1 win!!!!");
+			} else {
+				System.out.println("Player2 win!!!!");
+			}
+
+		}
 
 	}
-	
+
 	public static void setGameOver(boolean status) {
 		gameOver = status;
 	}
-	
+
 	public static void setWinner(int player) {
 		winner = player;
 	}

@@ -1,8 +1,11 @@
 package logic;
 
+import java.util.ArrayList;
+
 import itemcard.ItemCard;
 import tile.LocationTile;
 import tile.NormalLocationTile;
+import tile.SpacialLocationTile;
 import tile.Tile;
 
 public class Player {
@@ -11,7 +14,8 @@ public class Player {
 	private int money;
 	private ItemCard itemCard;
 	private int position;
-	private int houseOwnValue;
+	private ArrayList<NormalLocationTile>normalLocationList;
+	private ArrayList<SpacialLocationTile>spcialLocationList;
 	
 	public Player(int playernumber,String name) {
 		this.playerNumber = playernumber;
@@ -19,7 +23,8 @@ public class Player {
 		this.money = 100000;
 		this.itemCard = null;
 		this.position = 0;
-		this.houseOwnValue = 0;
+		this.normalLocationList = new ArrayList<NormalLocationTile>();
+		this.spcialLocationList = new ArrayList<SpacialLocationTile>();
 	}
 
 	public void move(int step) {
@@ -39,6 +44,11 @@ public class Player {
 	public boolean buyLocation(LocationTile location) {
 		if(this.money >= location.getBuyPrice()) {
 			this.money -= location.getBuyPrice();
+			if (location instanceof NormalLocationTile) {
+				this.normalLocationList.add((NormalLocationTile) location);
+			}else {
+				this.spcialLocationList.add((SpacialLocationTile) location);
+			}
 			return true;
 		}
 		return false;
@@ -69,6 +79,7 @@ public class Player {
 	public boolean transferLocation(NormalLocationTile normalLocationTile) {
 		if(this.money >= normalLocationTile.getTransferPrice()) {
 			this.money -= normalLocationTile.getTransferPrice();
+			this.normalLocationList.add(normalLocationTile);
 			return true;
 		}
 		return false;
@@ -78,6 +89,30 @@ public class Player {
 		this.money += amount;
 		
 	}
+
+	public ArrayList<SpacialLocationTile> getSpacialLocationList() {
+		return this.spcialLocationList;
+	}
+
+	public void removeLocation(NormalLocationTile normalLocationTile) {
+		this.spcialLocationList.remove(normalLocationTile);
+		
+	}
+	
+	public int totalAsset() {
+		int money = this.money;
+		for (NormalLocationTile e : normalLocationList) {
+			money += e.getFallPrice();
+		}
+		
+		for (SpacialLocationTile e : spcialLocationList) {
+			money += e.getFallPrice();
+		}
+		return money;
+	}
+
+	
+	
 	
 	
 }
