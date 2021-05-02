@@ -1,5 +1,7 @@
 package tile;
 
+import logic.Player;
+
 public class JailTile extends Tile implements Interactable {
 
 	public JailTile(String name) {
@@ -8,7 +10,7 @@ public class JailTile extends Tile implements Interactable {
 	}
 
 	@Override
-	public void interact() {
+	public void interact(Player player) {
 		// TODO Auto-generated method stub
 		
 	}

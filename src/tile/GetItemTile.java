@@ -2,6 +2,8 @@ package tile;
 
 import java.util.ArrayList;
 
+import logic.Player;
+
 public class GetItemTile extends Tile implements Interactable {
 
 	public GetItemTile(String name) {
@@ -10,7 +12,7 @@ public class GetItemTile extends Tile implements Interactable {
 	}
 
 	@Override
-	public void interact() {
+	public void interact(Player player) {
 		// TODO Auto-generated method stub
 		
 	}

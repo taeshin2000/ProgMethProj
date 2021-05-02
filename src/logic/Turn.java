@@ -8,6 +8,7 @@ import application.Main;
 import tile.LocationTile;
 import tile.NormalLocationTile;
 import tile.SpacialLocationTile;
+import tile.WarpTile;
 
 public class Turn {
 	private Player currentPlayer;
@@ -82,6 +83,11 @@ public class Turn {
 					}
 				}
 			}
+		}
+		
+		if (board.getTile(currentPlayer.getPosition()) instanceof WarpTile) {
+			((WarpTile) board.getTile(currentPlayer.getPosition())).interact(currentPlayer);
+			
 		}
 	}
 

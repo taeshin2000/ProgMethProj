@@ -111,6 +111,11 @@ public class Player {
 		return money;
 	}
 
+	public void setPosition(int position) {
+		this.position = position;
+		
+	}
+
 	
 	
 	

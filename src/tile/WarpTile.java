@@ -1,14 +1,35 @@
 package tile;
 
+import java.util.Scanner;
+
+import logic.Player;
+
 public class WarpTile extends Tile implements Interactable {
 	public WarpTile(String name) {
 		super(name);
 	}
 
 	@Override
-	public void interact() {
-		// TODO Auto-generated method stub
+	public void interact(Player player) {
+		int intinput = 18;
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Where do you want to go?");
+		while (intinput == 18) {
+			int input = scanner.nextInt();
+			if (input == 18) {
+			System.out.println("You can not go to warp tile again!!! insert new value.");
+			}else {
+				intinput = input;
+				break;
+			}
+			
+		}
+		player.setPosition(intinput);
+		System.out.println("Current position is " + player.getPosition());
+		
 		
 	}
+
+
 
 }
