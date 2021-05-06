@@ -2,14 +2,14 @@ package tile;
 
 public class NormalLocationTile extends LocationTile  {
 	private int upgradePrice;
+	
 	private boolean upgrade = true;
 	private int transferPrice;
 	
-	public NormalLocationTile(String name,int buyprice) {
-		super(name,buyprice);
+	public NormalLocationTile(String name,int buyprice,int multiplier) {
+		super(name,buyprice,multiplier);
 		this.transferPrice =(int)(buyprice*1.5);
 		this.upgradePrice = (int)(buyprice*0.5);
-
 		
 	}
 

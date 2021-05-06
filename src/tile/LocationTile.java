@@ -4,13 +4,15 @@ public class LocationTile extends Tile  {
 	private int buyPrice;
 	protected int owner = 0;
 	private int fallPrice;
+	private int multiplier;
 	
-	public LocationTile(String name,int buyprice) {
+	public LocationTile(String name,int buyprice,int multiplier) {
 		super(name);
 		this.setBuyPrice(buyprice);
 		this.fallPrice = (int)(0.75*buyprice);
 		
-		
+		//TODO : ใช้กับอะไร?
+		this.multiplier = multiplier;
 	}
 	
 	public int getBuyPrice() {
