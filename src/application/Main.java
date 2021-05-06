@@ -6,7 +6,7 @@ import logic.Player;
 import logic.Turn;
 import tile.LocationTile;
 import tile.NormalLocationTile;
-import tile.SpacialLocationTile;
+import tile.IslandLocationTile;
 
 public class Main {
 	private static Player player1;
