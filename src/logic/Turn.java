@@ -8,7 +8,7 @@ import application.Main;
 import tile.JailTile;
 import tile.LocationTile;
 import tile.NormalLocationTile;
-import tile.SpacialLocationTile;
+import tile.IslandLocationTile;
 import tile.WarpTile;
 
 public class Turn {
@@ -67,10 +67,10 @@ public class Turn {
 						}
 					}
 				} else {
-					if (((SpacialLocationTile) (board.getTile(currentPlayer.getPosition()))).getOwner() != currentPlayer
+					if (((IslandLocationTile) (board.getTile(currentPlayer.getPosition()))).getOwner() != currentPlayer
 							.getPlayerNumber()) {
 						if (currentPlayer
-								.fallOnOtherPlayer((SpacialLocationTile) (board.getTile(currentPlayer.getPosition())))) {
+								.fallOnOtherPlayer((IslandLocationTile) (board.getTile(currentPlayer.getPosition())))) {
 							fallOnLocation(board, player1, player2);
 						} else {
 							Main.setGameOver(true);

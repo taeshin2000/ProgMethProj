@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import itemcard.ItemCard;
 import tile.LocationTile;
 import tile.NormalLocationTile;
-import tile.SpacialLocationTile;
+import tile.IslandLocationTile;
 import tile.Tile;
 
 public class Player {
@@ -15,7 +15,7 @@ public class Player {
 	private ItemCard itemCard;
 	private int position;
 	private ArrayList<NormalLocationTile>normalLocationList;
-	private ArrayList<SpacialLocationTile>spcialLocationList;
+	private ArrayList<IslandLocationTile>spcialLocationList;
 	
 	public Player(int playernumber,String name) {
 		this.playerNumber = playernumber;
@@ -24,7 +24,7 @@ public class Player {
 		this.itemCard = null;
 		this.position = 0;
 		this.normalLocationList = new ArrayList<NormalLocationTile>();
-		this.spcialLocationList = new ArrayList<SpacialLocationTile>();
+		this.spcialLocationList = new ArrayList<IslandLocationTile>();
 	}
 
 	public void move(int step) {
@@ -47,7 +47,7 @@ public class Player {
 			if (location instanceof NormalLocationTile) {
 				this.normalLocationList.add((NormalLocationTile) location);
 			}else {
-				this.spcialLocationList.add((SpacialLocationTile) location);
+				this.spcialLocationList.add((IslandLocationTile) location);
 			}
 			return true;
 		}
@@ -90,7 +90,7 @@ public class Player {
 		
 	}
 
-	public ArrayList<SpacialLocationTile> getSpacialLocationList() {
+	public ArrayList<IslandLocationTile> getSpacialLocationList() {
 		return this.spcialLocationList;
 	}
 
@@ -105,7 +105,7 @@ public class Player {
 			money += e.getFallPrice();
 		}
 		
-		for (SpacialLocationTile e : spcialLocationList) {
+		for (IslandLocationTile e : spcialLocationList) {
 			money += e.getFallPrice();
 		}
 		return money;
