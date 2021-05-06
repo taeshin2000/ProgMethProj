@@ -7,7 +7,7 @@ import tile.GetItemTile;
 import tile.JailTile;
 import tile.LocationTile;
 import tile.NormalLocationTile;
-import tile.SpacialLocationTile;
+import tile.IslandLocationTile;
 import tile.StartTile;
 import tile.Tile;
 import tile.WarpTile;
@@ -17,30 +17,37 @@ public class InitialBoard {
 	
 	public InitialBoard() {
 		this.tileList = new ArrayList<Tile>();
+		// x1
 		this.tileList.add(new StartTile("Start"));
-		this.tileList.add(new NormalLocationTile("Mahamakut Building",12000));
-		this.tileList.add(new NormalLocationTile("Physics Laboratory",15000));
+		this.tileList.add(new NormalLocationTile("Mahamakut Building",12000,1));
+		this.tileList.add(new NormalLocationTile("Physics Laboratory",15000,1));
 		this.tileList.add(new GetItemTile("Item"));
-		this.tileList.add(new SpacialLocationTile("Faculty Of Arts", 7000));
-		this.tileList.add(new NormalLocationTile("True Coffee", 20000));
+		this.tileList.add(new IslandLocationTile("Faculty of Science", 7000,1));
+		this.tileList.add(new NormalLocationTile("True Coffee", 20000,1));
 		this.tileList.add(new JailTile("Jail"));
-		this.tileList.add(new NormalLocationTile("Civil Engineering", 35000));
-		this.tileList.add(new NormalLocationTile("Computer Center", 25000));
+		
+		// x2
+		this.tileList.add(new NormalLocationTile("CE Building", 35000,2));
+		this.tileList.add(new NormalLocationTile("Computer Center", 25000,2));
 		this.tileList.add(new GetItemTile("Item"));
-		this.tileList.add(new NormalLocationTile("Electrical Engineering", 23000));
-		this.tileList.add(new SpacialLocationTile("Faculty of Commerce and Accountancy", 8000));
+		this.tileList.add(new NormalLocationTile("EE Building", 23000,2));
+		this.tileList.add(new IslandLocationTile("Faculty of Commerce and Accountancy", 8000,2));
 		this.tileList.add(new DoublePriceTile("DoublePrice"));
-		this.tileList.add(new NormalLocationTile("Building Engineering 100 Years", 18000));
-		this.tileList.add(new NormalLocationTile("4th building", 28000));
+		
+		// x3
+		this.tileList.add(new NormalLocationTile("ENG100 Building", 18000,3));
+		this.tileList.add(new NormalLocationTile("ENG4 Building", 28000,3));
 		this.tileList.add(new GetItemTile("Item"));
-		this.tileList.add(new NormalLocationTile("Office of Academic Resources", 36000));
-		this.tileList.add(new NormalLocationTile("Icanteen", 50000));
+		this.tileList.add(new NormalLocationTile("Office of Academic Resources", 36000,3));
+		this.tileList.add(new NormalLocationTile("iCanteen", 45000,3));
 		this.tileList.add(new WarpTile("Warp"));
-		this.tileList.add(new SpacialLocationTile("Faculty of Science", 9000));
-		this.tileList.add(new NormalLocationTile("Compute Engineering", 55000));
+		
+		// x4
+		this.tileList.add(new IslandLocationTile("Faculty Of Arts", 9000,4));
+		this.tileList.add(new NormalLocationTile("Compute Engineering", 50000,4));
 		this.tileList.add(new GetItemTile("Item"));
-		this.tileList.add(new NormalLocationTile("Library", 35000));
-		this.tileList.add(new NormalLocationTile("Sky caffee", 48000));
+		this.tileList.add(new NormalLocationTile("Library", 55000,4));
+		this.tileList.add(new NormalLocationTile("Sky cafe", 60000,4));
 		
 		
 		
