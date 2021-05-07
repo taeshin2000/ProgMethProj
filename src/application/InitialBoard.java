@@ -38,15 +38,15 @@ public class InitialBoard {
 		this.tileList.add(new NormalLocationTile("ENG100 Building", 18000,3));
 		this.tileList.add(new NormalLocationTile("ENG4 Building", 28000,3));
 		this.tileList.add(new GetItemTile("Item"));
-		this.tileList.add(new NormalLocationTile("Office of Academic Resources", 36000,3));
+		this.tileList.add(new NormalLocationTile("Central Library", 36000,3));
 		this.tileList.add(new NormalLocationTile("iCanteen", 45000,3));
 		this.tileList.add(new WarpTile("Warp"));
 		
 		// x4
 		this.tileList.add(new IslandLocationTile("Faculty Of Arts", 9000,4));
-		this.tileList.add(new NormalLocationTile("Compute Engineering", 50000,4));
+		this.tileList.add(new NormalLocationTile("Computer Engineering", 50000,4));
 		this.tileList.add(new GetItemTile("Item"));
-		this.tileList.add(new NormalLocationTile("Library", 55000,4));
+		this.tileList.add(new NormalLocationTile("Engineering Library", 55000,4));
 		this.tileList.add(new NormalLocationTile("Sky cafe", 60000,4));
 		
 		
