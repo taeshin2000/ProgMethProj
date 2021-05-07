@@ -1,17 +1,18 @@
 package tile;
 
+import application.InitialBoard;
 import logic.Player;
 
 public class StartTile extends Tile implements Interactable {
 	final int MONEYGAIN = 500;
 	//ตั้งมั่วๆไปก่อน
 	
-	public StartTile(String name) {
-		super(name);
+	public StartTile(String name,int position) {
+		super(name,position);
 		
 	}
 	@Override
-	public void interact(Player player) {
+	public void interact(Player player,InitialBoard board) {
 		// TODO Auto-generated method stub
 		
 	}

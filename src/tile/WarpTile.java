@@ -2,15 +2,16 @@ package tile;
 
 import java.util.Scanner;
 
+import application.InitialBoard;
 import logic.Player;
 
 public class WarpTile extends Tile implements Interactable {
-	public WarpTile(String name) {
-		super(name);
+	public WarpTile(String name,int position) {
+		super(name,position);
 	}
 
 	@Override
-	public void interact(Player player) {
+	public void interact(Player player,InitialBoard board) {
 		int intinput = 18;
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Where do you want to go?");

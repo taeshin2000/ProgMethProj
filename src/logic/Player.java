@@ -115,6 +115,12 @@ public class Player {
 		this.position = position;
 		
 	}
+	
+	public ArrayList<NormalLocationTile> getNormalLocationList() {
+		return normalLocationList;
+	}
+	
+		
 
 	
 	

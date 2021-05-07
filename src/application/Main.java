@@ -34,6 +34,10 @@ public class Main {
 			String input = scanner.nextLine();
 			if (input.equals("roll")) {
 				int step = turn.rollDice();
+				if ((turn.getCurrentPlayer().getPosition() + step)%24 < turn.getCurrentPlayer().getPosition()){
+					turn.getCurrentPlayer().increaseMoney(10000);
+					System.out.println("Player " + turn.getCurrentPlayer().getPlayerNumber() + " has passed the START tile and gain 10000.");	
+				}
 				(turn.getCurrentPlayer()).move(step);
 				System.out
 						.println("Player" + turn.getCurrentPlayer().getPlayerNumber() + " move " + step + " step(s).");

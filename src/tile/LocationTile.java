@@ -6,8 +6,8 @@ public class LocationTile extends Tile  {
 	private int fallPrice;
 	private int multiplier;
 	
-	public LocationTile(String name,int buyprice,int multiplier) {
-		super(name);
+	public LocationTile(String name,int buyprice,int multiplier,int position) {
+		super(name,position);
 		this.setBuyPrice(buyprice);
 		this.fallPrice = (int)(0.75*buyprice);
 		

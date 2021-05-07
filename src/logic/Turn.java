@@ -8,6 +8,7 @@ import application.Main;
 import tile.JailTile;
 import tile.LocationTile;
 import tile.NormalLocationTile;
+import tile.DoublePriceTile;
 import tile.IslandLocationTile;
 import tile.WarpTile;
 
@@ -85,14 +86,19 @@ public class Turn {
 				}
 			}
 		}
+		if (board.getTile(currentPlayer.getPosition()) instanceof DoublePriceTile) {
+			((DoublePriceTile) board.getTile(currentPlayer.getPosition())).interact(currentPlayer,board);
+			
+		}
+		
 		
 		if (board.getTile(currentPlayer.getPosition()) instanceof WarpTile) {
-			((WarpTile) board.getTile(currentPlayer.getPosition())).interact(currentPlayer);
+			((WarpTile) board.getTile(currentPlayer.getPosition())).interact(currentPlayer,board);
 			
 		}
 		
 		if (board.getTile(currentPlayer.getPosition()) instanceof JailTile){
-			((JailTile) board.getTile(currentPlayer.getPosition())).interact(currentPlayer);
+			((JailTile) board.getTile(currentPlayer.getPosition())).interact(currentPlayer,board);
 		}
 	}
 
