@@ -6,7 +6,7 @@ import java.util.Scanner;
 import application.InitialBoard;
 import logic.Player;
 
-public class DoublePriceTile extends Tile implements Interactable {
+public class DoublePriceTile extends SpacialTile {
 	
 	public DoublePriceTile(String name,int position) {
 		super(name,position);

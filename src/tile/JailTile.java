@@ -3,7 +3,7 @@ package tile;
 import application.InitialBoard;
 import logic.Player;
 
-public class JailTile extends Tile implements Interactable {
+public class JailTile extends SpacialTile {
 
 	public JailTile(String name,int position) {
 		super(name,position);

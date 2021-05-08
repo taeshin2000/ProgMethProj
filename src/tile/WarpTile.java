@@ -5,7 +5,7 @@ import java.util.Scanner;
 import application.InitialBoard;
 import logic.Player;
 
-public class WarpTile extends Tile implements Interactable {
+public class WarpTile extends SpacialTile {
 	public WarpTile(String name,int position) {
 		super(name,position);
 	}

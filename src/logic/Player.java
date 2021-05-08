@@ -3,6 +3,7 @@ package logic;
 import java.util.ArrayList;
 
 import itemcard.ItemCard;
+import itemcard.UseLaterCard;
 import tile.LocationTile;
 import tile.NormalLocationTile;
 import tile.IslandLocationTile;
@@ -12,7 +13,7 @@ public class Player {
 	private int playerNumber;
 	private String name;
 	private int money;
-	private ItemCard itemCard;
+	private UseLaterCard itemCard;
 	private int position;
 	private ArrayList<NormalLocationTile>normalLocationList;
 	private ArrayList<IslandLocationTile>spcialLocationList;
@@ -118,6 +119,10 @@ public class Player {
 	
 	public ArrayList<NormalLocationTile> getNormalLocationList() {
 		return normalLocationList;
+	}
+	
+	public UseLaterCard getItemCard() {
+		return itemCard;
 	}
 	
 		

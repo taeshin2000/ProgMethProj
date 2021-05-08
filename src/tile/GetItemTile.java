@@ -3,9 +3,13 @@ package tile;
 import java.util.ArrayList;
 
 import application.InitialBoard;
+import application.ItemList;
+import itemcard.ItemCard;
 import logic.Player;
 
-public class GetItemTile extends Tile implements Interactable {
+public class GetItemTile extends SpacialTile {
+	
+	private ItemList items  = new ItemList();
 
 	public GetItemTile(String name,int position) {
 		super(name,position);
@@ -14,7 +18,10 @@ public class GetItemTile extends Tile implements Interactable {
 
 	@Override
 	public void interact(Player player,InitialBoard board) {
-		// TODO Auto-generated method stub
+		ItemCard card = items.randomItem();
+		System.out.println("You get a " + card.getName());
+		
+		
 		
 	}
 }

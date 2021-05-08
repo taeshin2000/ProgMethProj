@@ -3,9 +3,7 @@ package tile;
 import application.InitialBoard;
 import logic.Player;
 
-public class StartTile extends Tile implements Interactable {
-	final int MONEYGAIN = 500;
-	//ตั้งมั่วๆไปก่อน
+public class StartTile extends SpacialTile {
 	
 	public StartTile(String name,int position) {
 		super(name,position);
