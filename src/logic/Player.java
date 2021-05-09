@@ -124,6 +124,15 @@ public class Player {
 	public UseLaterCard getItemCard() {
 		return itemCard;
 	}
+
+	public void decreaseMoney(int money) {
+		this.money -= money;
+		
+	}
+	
+	public void addItemCard(UseLaterCard card) {
+		this.itemCard = card;
+	}
 	
 		
 

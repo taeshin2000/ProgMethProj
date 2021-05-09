@@ -20,7 +20,7 @@ public class ItemList {
 		items.add(new GetMoneyCard("GetMoneyCard"));
 		items.add(new LoseMoneyCard("LoseMoneyCard"));
 		items.add(new ProtectionCard("ProtectionCard"));
-		items.add(new ExtraTurnCard("ExtraTurnCard"));
+		items.add(new ExtraTurnCard("DiceControlCard"));
 		
 	}
 

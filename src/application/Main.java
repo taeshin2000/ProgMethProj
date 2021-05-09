@@ -1,5 +1,6 @@
 package application;
 
+import java.util.Currency;
 import java.util.Scanner;
 
 import itemcard.DiceControllCard;
@@ -37,6 +38,7 @@ public class Main {
 				String input2 = scanner.nextLine();
 				if (input2.equals("use")) {
 					step = scanner.nextInt();
+					turn.getCurrentPlayer().addItemCard(null);
 				} else {
 					step = turn.rollDice();
 				}
