@@ -8,6 +8,7 @@ import itemcard.DiceControllCard;
 import itemcard.GetMoneyCard;
 import itemcard.ItemCard;
 import itemcard.LoseMoneyCard;
+import itemcard.ProtectionCard;
 import itemcard.UseLaterCard;
 import logic.Player;
 
@@ -28,16 +29,24 @@ public class GetItemTile extends SpacialTile {
 			((GetMoneyCard)card).active(player);
 			
 		}
-		if (card instanceof LoseMoneyCard) {
+		else if (card instanceof LoseMoneyCard) {
 			((LoseMoneyCard)card).active(player);
 		}
-		if (card instanceof DiceControllCard) {
-			if (!player.getHaveDiceControllCard()) {
+		else if (card instanceof DiceControllCard) {
+			if (!player.getHaveDiceControllCard() && !player.getHaveProtectionCard()) {
 				player.setDiceControllCard(true);
 			}else {
 				System.out.println("You already have an item card!!!");
 			}
 			
+		}
+		
+		else if (card instanceof ProtectionCard) {
+			if (!player.getHaveDiceControllCard() && !player.getHaveProtectionCard()) {
+				player.setProtectionCard(true);
+			}
+		}else {
+			System.out.println("You already have an item card!!!");
 		}
 		
 		

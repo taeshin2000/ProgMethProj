@@ -59,11 +59,27 @@ public class Turn {
 								fallOnLocation(board, player1, player2);
 								transferLocation(board, player1, player2);
 							} else {
-								Main.setGameOver(true);
-								if (currentPlayer.getPlayerNumber() == 1) {
-									Main.setWinner(2); 
-								} else {
-									Main.setWinner(1);
+								if (currentPlayer.getHaveProtectionCard()) {
+									System.out.println("Do you want to use your protection card? (y/n)");
+									String protectInput = scanner.nextLine();
+									if (protectInput == "y") {
+										currentPlayer.setProtectionCard(false);
+									}else {
+										Main.setGameOver(true);
+										if (currentPlayer.getPlayerNumber() == 1) {
+											Main.setWinner(2); 
+										} else {
+											Main.setWinner(1);
+										}
+									}
+								}else {
+									Main.setGameOver(true);
+									if (currentPlayer.getPlayerNumber() == 1) {
+										Main.setWinner(2); 
+									} else {
+										Main.setWinner(1);
+									}
+									
 								}
 
 							}
@@ -76,11 +92,27 @@ public class Turn {
 								.fallOnOtherPlayer((IslandLocationTile) (board.getTile(currentPlayer.getPosition())))) {
 							fallOnLocation(board, player1, player2);
 						} else {
-							Main.setGameOver(true);
-							if (currentPlayer.getPlayerNumber() == 1) {
-								Main.setWinner(2); 
-							} else {
-								Main.setWinner(1);
+							if (currentPlayer.getHaveProtectionCard()) {
+								System.out.println("Do you want to use your protection card? (y/n)");
+								String protectInput = scanner.nextLine();
+								if (protectInput == "y") {
+									currentPlayer.setProtectionCard(false);
+								}else {
+									Main.setGameOver(true);
+									if (currentPlayer.getPlayerNumber() == 1) {
+										Main.setWinner(2); 
+									} else {
+										Main.setWinner(1);
+									}
+								}
+							}else {
+								Main.setGameOver(true);
+								if (currentPlayer.getPlayerNumber() == 1) {
+									Main.setWinner(2); 
+								} else {
+									Main.setWinner(1);
+								}
+								
 							}
 
 						}

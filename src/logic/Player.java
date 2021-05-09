@@ -135,12 +135,24 @@ public class Player {
 		
 		return this.haveDiceControllCard;
 	}
+	
+	public boolean getHaveProtectionCard() {
+		return this.haveProtectionCard;
+	}
 
 	public void setDiceControllCard(boolean b) {
 		this.haveDiceControllCard = b;
 		
 	}
 	
+	public void setProtectionCard(boolean b) {
+		this.haveProtectionCard = b;
+		
+	}
+	
+	public void setMoney(int money) {
+		this.money = money;
+	}
 	
 
 

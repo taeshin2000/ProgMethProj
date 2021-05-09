@@ -9,6 +9,5 @@ public abstract class UseLaterCard extends ItemCard {
 		super(name);
 	}
 	
-	public abstract void Use(Player player);
 
 }
