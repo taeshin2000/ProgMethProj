@@ -2,7 +2,9 @@ package logic;
 
 import java.util.ArrayList;
 
+import itemcard.DiceControllCard;
 import itemcard.ItemCard;
+import itemcard.ProtectionCard;
 import itemcard.UseLaterCard;
 import tile.LocationTile;
 import tile.NormalLocationTile;
@@ -13,25 +15,27 @@ public class Player {
 	private int playerNumber;
 	private String name;
 	private int money;
-	private UseLaterCard itemCard;
+	private boolean haveDiceControllCard;
+	private boolean haveProtectionCard;
 	private int position;
-	private ArrayList<NormalLocationTile>normalLocationList;
-	private ArrayList<IslandLocationTile>spcialLocationList;
-	
-	public Player(int playernumber,String name) {
+	private ArrayList<NormalLocationTile> normalLocationList;
+	private ArrayList<IslandLocationTile> spcialLocationList;
+
+	public Player(int playernumber, String name) {
 		this.playerNumber = playernumber;
 		this.name = name;
 		this.money = 100000;
-		this.itemCard = null;
+		this.haveDiceControllCard = false;
+		this.haveProtectionCard = false;
 		this.position = 0;
 		this.normalLocationList = new ArrayList<NormalLocationTile>();
 		this.spcialLocationList = new ArrayList<IslandLocationTile>();
 	}
 
 	public void move(int step) {
-		int newPosition = (this.position + step)%24;
+		int newPosition = (this.position + step) % 24;
 		this.position = newPosition;
-		
+
 	}
 
 	public int getPlayerNumber() {
@@ -41,22 +45,22 @@ public class Player {
 	public int getPosition() {
 		return this.position;
 	}
-	
+
 	public boolean buyLocation(LocationTile location) {
-		if(this.money >= location.getBuyPrice()) {
+		if (this.money >= location.getBuyPrice()) {
 			this.money -= location.getBuyPrice();
 			if (location instanceof NormalLocationTile) {
 				this.normalLocationList.add((NormalLocationTile) location);
-			}else {
+			} else {
 				this.spcialLocationList.add((IslandLocationTile) location);
 			}
 			return true;
 		}
 		return false;
-		
+
 	}
-	
-	public int getMoney(){
+
+	public int getMoney() {
 		return this.money;
 	}
 
@@ -66,9 +70,9 @@ public class Player {
 			return true;
 		}
 		return false;
-		
+
 	}
-	
+
 	public boolean fallOnOtherPlayer(LocationTile location) {
 		if (this.money >= location.getFallPrice()) {
 			this.money -= location.getFallPrice();
@@ -78,7 +82,7 @@ public class Player {
 	}
 
 	public boolean transferLocation(NormalLocationTile normalLocationTile) {
-		if(this.money >= normalLocationTile.getTransferPrice()) {
+		if (this.money >= normalLocationTile.getTransferPrice()) {
 			this.money -= normalLocationTile.getTransferPrice();
 			this.normalLocationList.add(normalLocationTile);
 			return true;
@@ -88,7 +92,7 @@ public class Player {
 
 	public void increaseMoney(int amount) {
 		this.money += amount;
-		
+
 	}
 
 	public ArrayList<IslandLocationTile> getSpacialLocationList() {
@@ -97,15 +101,15 @@ public class Player {
 
 	public void removeLocation(NormalLocationTile normalLocationTile) {
 		this.spcialLocationList.remove(normalLocationTile);
-		
+
 	}
-	
+
 	public int totalAsset() {
 		int money = this.money;
 		for (NormalLocationTile e : normalLocationList) {
 			money += e.getFallPrice();
 		}
-		
+
 		for (IslandLocationTile e : spcialLocationList) {
 			money += e.getFallPrice();
 		}
@@ -114,30 +118,30 @@ public class Player {
 
 	public void setPosition(int position) {
 		this.position = position;
-		
+
 	}
-	
+
 	public ArrayList<NormalLocationTile> getNormalLocationList() {
 		return normalLocationList;
 	}
-	
-	public UseLaterCard getItemCard() {
-		return itemCard;
-	}
+
 
 	public void decreaseMoney(int money) {
 		this.money -= money;
-		
-	}
-	
-	public void addItemCard(UseLaterCard card) {
-		this.itemCard = card;
-	}
-	
-		
 
+	}
+
+	public boolean getHaveDiceControllCard() {
+		
+		return this.haveDiceControllCard;
+	}
+
+	public void setDiceControllCard(boolean b) {
+		this.haveDiceControllCard = b;
+		
+	}
 	
 	
-	
-	
+
+
 }

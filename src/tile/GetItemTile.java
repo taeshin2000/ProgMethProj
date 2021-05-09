@@ -32,9 +32,8 @@ public class GetItemTile extends SpacialTile {
 			((LoseMoneyCard)card).active(player);
 		}
 		if (card instanceof DiceControllCard) {
-			if (player.getItemCard() == null) {
-				player.addItemCard((UseLaterCard) card);
-				
+			if (!player.getHaveDiceControllCard()) {
+				player.setDiceControllCard(true);
 			}else {
 				System.out.println("You already have an item card!!!");
 			}

@@ -33,12 +33,13 @@ public class Main {
 		while (turnCount < 30) {
 			System.out.println("Current turn is Player" + turn.getCurrentPlayer().getPlayerNumber() + " turn.(Turn "
 					+ (turnCount + 1) + ")");
-			if (turn.getCurrentPlayer().getItemCard() instanceof DiceControllCard) {
+			System.out.println(turn.getCurrentPlayer().getHaveDiceControllCard());
+			if (turn.getCurrentPlayer().getHaveDiceControllCard()) {
 				System.out.println("Do you want to roll the dice or use your item card? (roll/use)");
 				String input2 = scanner.nextLine();
 				if (input2.equals("use")) {
 					step = scanner.nextInt();
-					turn.getCurrentPlayer().addItemCard(null);
+					turn.getCurrentPlayer().setDiceControllCard(false);
 				} else {
 					step = turn.rollDice();
 				}
