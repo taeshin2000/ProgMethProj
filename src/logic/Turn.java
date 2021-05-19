@@ -4,15 +4,17 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.ArrayList;
 import application.InitialBoard;
-import application.Main;
+import gui.BuyBtn;
+import main.Main;
+import application.GameController;
 import tile.JailTile;
 import tile.LocationTile;
 import tile.NormalLocationTile;
 import tile.SpacialTile;
-import tile.DoublePriceTile;
+import tile.DrunkTile;
 import tile.GetItemTile;
 import tile.IslandLocationTile;
-import tile.WarpTile;
+import tile.ATile;
 
 public class Turn {
 	private Player currentPlayer;
@@ -48,8 +50,7 @@ public class Turn {
 			} else {
 				if (board.getTile(currentPlayer.getPosition()) instanceof NormalLocationTile) {
 					if (((NormalLocationTile) (board.getTile(currentPlayer.getPosition()))).getOwner() == currentPlayer
-							.getPlayerNumber()
-							&& ((NormalLocationTile) (board.getTile(currentPlayer.getPosition()))).upgradeable()) {
+							.getPlayerNumber()) {
 						upgradeLocation(board);
 					} else {
 						if (((NormalLocationTile) (board.getTile(currentPlayer.getPosition())))
@@ -60,24 +61,28 @@ public class Turn {
 								transferLocation(board, player1, player2);
 							} else {
 								if (currentPlayer.getHaveProtectionCard()) {
-									System.out.println("Do you want to use your protection card? (y/n)");
-									String protectInput = scanner.nextLine();
-									if (protectInput == "y") {
-										currentPlayer.setProtectionCard(false);
+									currentPlayer.setProtectionCard(false);
+									Main.player1Pane.updatePlayerPane(1);
+									Main.player2Pane.updatePlayerPane(2);
+									GameController.increaseTurnCount();
+									Main.dicePane.updateDicePaneScreen();
+									if (!Main.skipTurn) {
+										GameController.turn.changeCurrentPlayer(GameController.player1, GameController.player2);
+										Main.player1Pane.updatePlayerPaneScreen();
+										Main.player2Pane.updatePlayerPaneScreen();
+										
 									}else {
-										Main.setGameOver(true);
-										if (currentPlayer.getPlayerNumber() == 1) {
-											Main.setWinner(2); 
-										} else {
-											Main.setWinner(1);
-										}
+										Main.skipTurn = false;
 									}
+									Main.dicePane.getRollButton().setDisable(false);
+									
+
 								}else {
-									Main.setGameOver(true);
+									GameController.setGameOver(true);
 									if (currentPlayer.getPlayerNumber() == 1) {
-										Main.setWinner(2); 
+										GameController.setWinner(2); 
 									} else {
-										Main.setWinner(1);
+										GameController.setWinner(1);
 									}
 									
 								}
@@ -93,29 +98,45 @@ public class Turn {
 							fallOnLocation(board, player1, player2);
 						} else {
 							if (currentPlayer.getHaveProtectionCard()) {
-								System.out.println("Do you want to use your protection card? (y/n)");
-								String protectInput = scanner.nextLine();
-								if (protectInput == "y") {
-									currentPlayer.setProtectionCard(false);
+								currentPlayer.setProtectionCard(false);
+								Main.player1Pane.updatePlayerPane(1);
+								Main.player2Pane.updatePlayerPane(2);
+								GameController.increaseTurnCount();
+								Main.dicePane.updateDicePaneScreen();
+								if (!Main.skipTurn) {
+									GameController.turn.changeCurrentPlayer(GameController.player1, GameController.player2);
+									Main.player1Pane.updatePlayerPaneScreen();
+									Main.player2Pane.updatePlayerPaneScreen();
+									
 								}else {
-									Main.setGameOver(true);
-									if (currentPlayer.getPlayerNumber() == 1) {
-										Main.setWinner(2); 
-									} else {
-										Main.setWinner(1);
-									}
+									Main.skipTurn = false;
 								}
+								Main.dicePane.getRollButton().setDisable(false);
+								
 							}else {
-								Main.setGameOver(true);
+								GameController.setGameOver(true);
 								if (currentPlayer.getPlayerNumber() == 1) {
-									Main.setWinner(2); 
+									GameController.setWinner(2); 
 								} else {
-									Main.setWinner(1);
+									GameController.setWinner(1);
 								}
 								
 							}
 
 						}
+					}
+					else {
+						GameController.increaseTurnCount();
+						Main.dicePane.updateDicePaneScreen();
+						if (!Main.skipTurn) {
+							GameController.turn.changeCurrentPlayer(GameController.player1, GameController.player2);
+							Main.player1Pane.updatePlayerPaneScreen();
+							Main.player2Pane.updatePlayerPaneScreen();
+							
+						}else {
+							Main.skipTurn = false;
+						}
+						Main.dicePane.getRollButton().setDisable(false);
 					}
 				}
 			}
@@ -126,43 +147,22 @@ public class Turn {
 	}
 
 	public void buyLocation(InitialBoard board) {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Do you want to buy this location? (y/n)");
-		String buyInput = scanner.nextLine();
-		if (buyInput.equals("y")) {
-			if (currentPlayer.buyLocation(((LocationTile) (board.getTile(currentPlayer.getPosition()))))) {
-				System.out.println("Player" + currentPlayer.getPlayerNumber() + " now own "
-						+ board.getLocationName(currentPlayer.getPosition()));
-				System.out.println("Current money is : " + currentPlayer.getMoney());
-				board.setLocationTileOwner(currentPlayer.getPosition(), currentPlayer.getPlayerNumber());
-			} else {
-
-				System.out.println("You don't have enough money!!!");
-			}
-		}
+		Main.buyButton.updateBuyButtonScreen();
+		Main.buyButton.setVisible(true);
+		
+			
+		
 	}
 
 	public void upgradeLocation(InitialBoard board) {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Do you want to upgrade this location? (y/n)");
-		String upgradeInput = scanner.nextLine();
-		if (upgradeInput.equals("y")) {
-
-			if (currentPlayer.upgradeLocation(((NormalLocationTile) (board.getTile(currentPlayer.getPosition()))))) {
-				System.out.println(board.getLocationName(currentPlayer.getPosition()) + "upgraded");
-				System.out.println("Current money is : " + currentPlayer.getMoney());
-				board.increaseLocationPrice(currentPlayer.getPosition());
-
-			} else {
-				System.out.println("You don't have enough money!!!");
-			}
-
-		}
+		Main.upgradeButton.updateUpgradeButtonScreen();
+		Main.upgradeButton.setVisible(true);
+		
 	}
 
 	public void fallOnLocation(InitialBoard board, Player player1, Player player2) {
-		System.out.println("You fall on another player location and lose "
-				+ ((LocationTile) (board.getTile(currentPlayer.getPosition()))).getFallPrice());
+		Main.loseMoneyButton.updateLoseMoneyBtnScreen();
+		Main.loseMoneyButton.setVisible(true);
 		increaseOtherPlayerMoney(((LocationTile) (board.getTile(currentPlayer.getPosition()))).getFallPrice(), player1,
 				player2);
 	}
@@ -177,36 +177,18 @@ public class Turn {
 	}
 
 	public void transferLocation(InitialBoard board, Player player1, Player player2) {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Do you want to transfer this loaction to you? (y/n)");
-		String transferInput = scanner.nextLine();
-		if (transferInput.equals("y")) {
-			if (currentPlayer.transferLocation(((NormalLocationTile) (board.getTile(currentPlayer.getPosition()))))) {
-				if (currentPlayer.getPlayerNumber() == 1) {
-					player2.removeLocation((NormalLocationTile) (board.getTile(currentPlayer.getPosition())));
-				}else {
-					player1.removeLocation((NormalLocationTile) (board.getTile(currentPlayer.getPosition())));
-				}
-				increaseOtherPlayerMoney(
-						((LocationTile) (board.getTile(currentPlayer.getPosition()))).getTransferPrice(), player1,
-						player2);
-				System.out.println("Player" + currentPlayer.getPlayerNumber() + " now own "
-						+ board.getLocationName(currentPlayer.getPosition()));
-				System.out.println("Current money is : " + currentPlayer.getMoney());
-				board.setLocationTileOwner(currentPlayer.getPosition(), currentPlayer.getPlayerNumber());
-			} else {
-				System.out.println("You don't have enough money!!!");
-			}
-		}
+		Main.transferButton.updateTransferBtnScreen();
+		Main.transferButton.setVisible(true);
+	
 	}
 
 	public void checkSpacialWin(InitialBoard board, Player player1, Player player2, boolean gameOver, int winner) {
 		if ((currentPlayer.getSpacialLocationList()).size() == 3) {
-			Main.setGameOver(true);
+			GameController.setGameOver(true);
 			if (currentPlayer.getPlayerNumber() == 1) {
-				Main.setWinner(1);
+				GameController.setWinner(1);
 			}else {
-				Main.setWinner(2);
+				GameController.setWinner(2);
 			}
 		}
 		

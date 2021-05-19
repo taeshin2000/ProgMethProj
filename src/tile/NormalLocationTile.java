@@ -6,8 +6,8 @@ public class NormalLocationTile extends LocationTile  {
 	private boolean upgrade = true;
 	private int transferPrice;
 	
-	public NormalLocationTile(String name,int buyprice,int multiplier,int position) {
-		super(name,buyprice,multiplier,position);
+	public NormalLocationTile(String name,int buyprice,int position) {
+		super(name,buyprice,position);
 		this.transferPrice =(int)(buyprice*1.5);
 		this.upgradePrice = (int)(buyprice*0.5);
 		

@@ -2,7 +2,6 @@ package logic;
 
 import java.util.ArrayList;
 
-import itemcard.DiceControllCard;
 import itemcard.ItemCard;
 import itemcard.ProtectionCard;
 import itemcard.UseLaterCard;
@@ -15,7 +14,6 @@ public class Player {
 	private int playerNumber;
 	private String name;
 	private int money;
-	private boolean haveDiceControllCard;
 	private boolean haveProtectionCard;
 	private int position;
 	private ArrayList<NormalLocationTile> normalLocationList;
@@ -25,7 +23,6 @@ public class Player {
 		this.playerNumber = playernumber;
 		this.name = name;
 		this.money = 100000;
-		this.haveDiceControllCard = false;
 		this.haveProtectionCard = false;
 		this.position = 0;
 		this.normalLocationList = new ArrayList<NormalLocationTile>();
@@ -131,20 +128,11 @@ public class Player {
 
 	}
 
-	public boolean getHaveDiceControllCard() {
-		
-		return this.haveDiceControllCard;
-	}
-	
 	public boolean getHaveProtectionCard() {
 		return this.haveProtectionCard;
 	}
 
-	public void setDiceControllCard(boolean b) {
-		this.haveDiceControllCard = b;
-		
-	}
-	
+
 	public void setProtectionCard(boolean b) {
 		this.haveProtectionCard = b;
 		
@@ -152,6 +140,15 @@ public class Player {
 	
 	public void setMoney(int money) {
 		this.money = money;
+	}
+
+	public void setName(String text) {
+		this.name = text;
+		
+	}
+	
+	public String getName() {
+		return this.name;
 	}
 	
 

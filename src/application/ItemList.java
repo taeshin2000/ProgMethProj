@@ -3,8 +3,6 @@ package application;
 import java.util.ArrayList;
 import java.util.Random;
 
-import itemcard.DiceControllCard;
-import itemcard.ExtraTurnCard;
 import itemcard.GetMoneyCard;
 import itemcard.ItemCard;
 import itemcard.LoseMoneyCard;
@@ -21,12 +19,12 @@ public class ItemList {
 		items.add(new GetMoneyCard("GetMoneyCard"));
 		items.add(new LoseMoneyCard("LoseMoneyCard"));
 		items.add(new ProtectionCard("ProtectionCard"));
-		items.add(new DiceControllCard("DiceControlCard"));
+		
 		
 	}
 
 	public static ItemCard randomItem() {
-		int random = ran.nextInt(4);
+		int random = ran.nextInt(3);
 		return items.get(random);
 	}
 }

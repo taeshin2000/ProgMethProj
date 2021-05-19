@@ -1,7 +1,9 @@
 package tile;
 
+import application.GameController;
 import application.InitialBoard;
 import logic.Player;
+import main.Main;
 
 public class JailTile extends SpacialTile {
 
@@ -12,7 +14,13 @@ public class JailTile extends SpacialTile {
 
 	@Override
 	public void interact(Player player,InitialBoard board) {
-		System.out.println("You are in jail.Can't move for 1 turn.");	
+		GameController.turn.changeCurrentPlayer(GameController.player1, GameController.player2);
+		Main.skipTurn = true;
+		Main.player1Pane.updatePlayerPaneScreen();
+		Main.player2Pane.updatePlayerPaneScreen();
+		Main.dicePane.getRollButton().setDisable(false);
+		GameController.increaseTurnCount();
+		Main.dicePane.updateDicePaneScreen();
 	}
 
 }
