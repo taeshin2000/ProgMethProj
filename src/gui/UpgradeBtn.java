@@ -49,6 +49,7 @@ public class UpgradeBtn extends VBox {
 					Main.upgradeButton.setVisible(false);
 					GameController.increaseTurnCount();
 					Main.dicePane.updateDicePaneScreen();
+					Main.mainPane.getTileBtnList().get(GameController.turn.getCurrentPlayer().getPosition()).setToolTip();
 					if (!Main.skipTurn) {
 						GameController.turn.changeCurrentPlayer(GameController.player1, GameController.player2);
 						Main.player1Pane.updatePlayerPaneScreen();

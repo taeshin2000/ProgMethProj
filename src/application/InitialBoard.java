@@ -32,7 +32,7 @@ public class InitialBoard {
 		this.tileList.add(new GetItemTile("Item",9));
 		this.tileList.add(new NormalLocationTile("EE Building", 30000,10));
 		this.tileList.add(new IslandLocationTile("Faculty of Commerce and Accountancy", 8000,11));
-		this.tileList.add(new DrunkTile("DoublePrice",12));
+		this.tileList.add(new DrunkTile("Drunk",12));
 		
 		// x3
 		this.tileList.add(new NormalLocationTile("ENG100 Building", 35000,13));
@@ -40,7 +40,7 @@ public class InitialBoard {
 		this.tileList.add(new GetItemTile("Item",15));
 		this.tileList.add(new NormalLocationTile("Central Library", 40000,16));
 		this.tileList.add(new NormalLocationTile("iCanteen", 45000,17));
-		this.tileList.add(new ATile("Warp",18));
+		this.tileList.add(new ATile("A+",18));
 		
 		// x4
 		this.tileList.add(new IslandLocationTile("Faculty Of Arts", 9000,19));
