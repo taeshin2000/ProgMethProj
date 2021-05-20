@@ -32,7 +32,7 @@ public class PlayerPane extends Pane{
 		this.setPrefSize(258, 153);
 		this.playerMoney = new Text();
 		this.playerMoney.setFill(Color.WHITE);
-		this.playerMoney.setFont(new Font(40));
+		this.playerMoney.setFont(new Font(20));
 		this.playerMoney.setLayoutX(105);
 		this.playerMoney.setLayoutY(120);
 		
@@ -40,7 +40,7 @@ public class PlayerPane extends Pane{
 		this.playerName.setFill(Color.WHITE);
 		this.playerName.setLayoutX(20);
 		this.playerName.setLayoutY(35);
-		this.playerName.setFont(new Font(40));
+		this.playerName.setFont(new Font(20));
 		
 		this.playerItem = new Text("item : ");
 		this.playerItem.setFill(Color.WHITE);
