@@ -1,6 +1,7 @@
 package gui;
 
 import application.GameController;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -59,6 +60,9 @@ public class GetItemPane extends VBox {
 	}
 	
 	public void updateGetItemPaneScreen(String text1) {
-		this.text.setText(text1);
+		Platform.runLater(()->{
+			this.text.setText(text1);
+		});
+		
 	}
 }

@@ -1,6 +1,7 @@
 package gui;
 
 import application.GameController;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -93,6 +94,9 @@ public class UpgradeBtn extends VBox {
 	public void updateUpgradeButtonScreen(){
 		NormalLocationTile tile = (NormalLocationTile) (GameController.board.getTile(GameController.turn.getCurrentPlayer().getPosition()));
 		int upgradePrice = tile.getUpgradePrice();
-		upgradeButton.setText(Integer.toString(upgradePrice));
+		Platform.runLater(()->{
+			upgradeButton.setText(Integer.toString(upgradePrice));
+		});
+		
 	}
 }

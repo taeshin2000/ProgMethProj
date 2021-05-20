@@ -23,8 +23,8 @@ public class P2WinPane extends VBox {
 		this.setPrefSize(400, 300);
 
 		this.winText = new Text();
-		this.winText.setFont(new Font(20));
-		this.winText.setText("Player2 Winnn!!!");
+		this.winText.setFont(new Font(25));
+		this.winText.setText("Player2 Wins!!!");
 		
 		this.quitButton = new Button("Quit Game");
 		this.quitButton.setPrefSize(100, 50);

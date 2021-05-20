@@ -113,10 +113,10 @@ public class Main extends Application {
 				if (keyEvent.getCode().equals(KeyCode.ENTER)) {
 					if (player2Name.getText().equals("Input player2 name and press enter!") 
 							|| player2Name.getText().isBlank()) {
-						GameController.player1.setName("Player2");
+						GameController.player2.setName("Player2");
 					}
 					else {
-						GameController.player1.setName(player2Name.getText());
+						GameController.player2.setName(player2Name.getText());
 					}
 					GameController.initilizeGame();
 					primaryStage.setScene(createGameScene());

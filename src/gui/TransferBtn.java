@@ -1,6 +1,7 @@
 package gui;
 
 import application.GameController;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -112,7 +113,10 @@ public class TransferBtn extends VBox {
 		// TODO Auto-generated method stub
 		NormalLocationTile tile = (NormalLocationTile) (GameController.board.getTile(GameController.turn.getCurrentPlayer().getPosition()));
 		int transferPrice = tile.getTransferPrice();
-		transferButton.setText(Integer.toString(transferPrice));
+		Platform.runLater(()->{
+			transferButton.setText(Integer.toString(transferPrice));
+		});
+		
 		
 	}
 }

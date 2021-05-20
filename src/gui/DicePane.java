@@ -3,6 +3,7 @@ package gui;
 import java.io.File;
 
 import application.GameController;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -42,19 +43,30 @@ public class DicePane extends VBox {
 			@Override
 			public void handle(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				int step = GameController.turn.rollDice();
-				updateDiceImage(step);
-				if ((GameController.turn.getCurrentPlayer().getPosition() + step) % 24 < GameController.turn.getCurrentPlayer().getPosition()) {
-					GameController.turn.getCurrentPlayer().increaseMoney(20000);
-				}
-				Main.player1Pane.updatePlayerPane(1);
-				Main.player2Pane.updatePlayerPane(2);
-				(GameController.turn.getCurrentPlayer()).move(step);
-				Main.mainPane.updateMainPaneScreen();
-				rollButton.setDisable(true);
-				GameController.turn.action(GameController.board, GameController.player1, GameController.player2,
-						GameController.gameOver, GameController.winner);
-				CheckEndGame.checkEndGame();
+				Thread t1 = new Thread(()->{
+					
+					int step = GameController.turn.rollDice();
+					updateDiceImage(step);
+					if ((GameController.turn.getCurrentPlayer().getPosition() + step) % 24 < GameController.turn.getCurrentPlayer().getPosition()) {
+						GameController.turn.getCurrentPlayer().increaseMoney(20000);
+					}
+					
+					Main.player1Pane.updatePlayerPane(1);
+					Main.player2Pane.updatePlayerPane(2);
+					(GameController.turn.getCurrentPlayer()).move(step);
+					Main.mainPane.updateMainPaneScreen();
+					rollButton.setDisable(true);
+					try {
+						Thread.sleep(30);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					GameController.turn.action(GameController.board, GameController.player1, GameController.player2,
+							GameController.gameOver, GameController.winner);
+					CheckEndGame.checkEndGame();
+				});
+				t1.start();
 			}
 
 		});

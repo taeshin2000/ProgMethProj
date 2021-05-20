@@ -3,6 +3,7 @@ package gui;
 import application.GameController;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
+import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -67,19 +68,22 @@ public class PlayerPane extends Pane{
 	}
 	
 	public void updatePlayerPane(int player) {
-		if (player == 1) {
-			this.playerName.textProperty().setValue(GameController.player1.getName()); 
-			this.playerMoney.textProperty().setValue(Integer.toString(GameController.player1.getMoney()));
-		} else {
-			this.playerName.textProperty().setValue(GameController.player2.getName());
-			this.playerMoney.textProperty().setValue(Integer.toString(GameController.player2.getMoney()));
-		}
-		if(GameController.player1.getHaveProtectionCard()) {
-			Main.player1Pane.playerItem.textProperty().setValue("item : Protection");
-		}
-		if(GameController.player2.getHaveProtectionCard()) {
-			Main.player2Pane.playerItem.textProperty().setValue("item : Protection");
-		}
+		Platform.runLater(()->{
+			if (player == 1) {
+				this.playerName.textProperty().setValue(GameController.player1.getName()); 
+				this.playerMoney.textProperty().setValue(Integer.toString(GameController.player1.getMoney()));
+			} else {
+				this.playerName.textProperty().setValue(GameController.player2.getName());
+				this.playerMoney.textProperty().setValue(Integer.toString(GameController.player2.getMoney()));
+			}
+			if(GameController.player1.getHaveProtectionCard()) {
+				Main.player1Pane.playerItem.textProperty().setValue("item : Protection");
+			}
+			if(GameController.player2.getHaveProtectionCard()) {
+				Main.player2Pane.playerItem.textProperty().setValue("item : Protection");
+			}
+		});
+		
 	}
 	
 	public void updatePlayerPaneScreen() {

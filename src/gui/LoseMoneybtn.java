@@ -1,6 +1,7 @@
 package gui;
 
 import application.GameController;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -69,7 +70,10 @@ public class LoseMoneybtn extends VBox {
 	public void updateLoseMoneyBtnScreen() {
 		// TODO Auto-generated method stub
 		LocationTile tile = (LocationTile) GameController.board.getTile(GameController.turn.getCurrentPlayer().getPosition());
-		this.priceLosetext.textProperty().setValue("You lose : " + tile.getFallPrice() );
+		Platform.runLater(()->{
+			this.priceLosetext.textProperty().setValue("You lose : " + tile.getFallPrice() );
+		});
+		
 		
 	}
 

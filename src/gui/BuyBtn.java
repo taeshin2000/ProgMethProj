@@ -1,5 +1,6 @@
 package gui;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -121,7 +122,10 @@ public class BuyBtn extends VBox {
 		LocationTile tile = (LocationTile) (GameController.board
 				.getTile(GameController.turn.getCurrentPlayer().getPosition()));
 		int buyPrice = tile.getBuyPrice();
-		buyButton.setText(Integer.toString(buyPrice));
+		Platform.runLater(()->{
+			buyButton.setText(Integer.toString(buyPrice));
+		});
+		
 
 	}
 }
