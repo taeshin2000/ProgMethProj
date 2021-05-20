@@ -87,7 +87,13 @@ public class Main extends Application {
 			public void handle(KeyEvent keyEvent) {
 				// TODO Auto-generated method stub
 				if (keyEvent.getCode().equals(KeyCode.ENTER)) {
-					GameController.player1.setName(player1Name.getText());
+					if (player1Name.getText().equals("Input player1 name and press enter!") 
+							|| player1Name.getText().isBlank()) {
+						GameController.player1.setName("Player1");
+					}
+					else {
+						GameController.player1.setName(player1Name.getText());
+					}
 					player1Name.setDisable(true);
 					player2Name.setDisable(false);
 				}
@@ -105,7 +111,13 @@ public class Main extends Application {
 			public void handle(KeyEvent keyEvent) {
 				// TODO Auto-generated method stub
 				if (keyEvent.getCode().equals(KeyCode.ENTER)) {
-					GameController.player2.setName(player2Name.getText());
+					if (player2Name.getText().equals("Input player2 name and press enter!") 
+							|| player2Name.getText().isBlank()) {
+						GameController.player1.setName("Player2");
+					}
+					else {
+						GameController.player1.setName(player2Name.getText());
+					}
 					GameController.initilizeGame();
 					primaryStage.setScene(createGameScene());
 					primaryStage.show();
