@@ -14,7 +14,7 @@ public class StartPane extends Base_UpdateUIButtonPane {
 			@Override
 			public void handle(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				Main.jailPane.setVisible(false);
+				Main.startPane.setVisible(false);
 				updateUI();			
 			}
 		});

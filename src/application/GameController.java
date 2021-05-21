@@ -13,7 +13,7 @@ public class GameController {
 	public static boolean gameOver = false;
 	public static int winner = 0;
 	
-	private static int maxGameTurn = 10;
+	private static int maxGameTurn = 30;
 	
 	public static int getMaxGameTurn() {
 		return maxGameTurn;

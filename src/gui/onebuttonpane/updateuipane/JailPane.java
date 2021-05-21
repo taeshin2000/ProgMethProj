@@ -16,7 +16,7 @@ public class JailPane extends Base_UpdateUIButtonPane{
 			public void handle(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				Main.jailPane.setVisible(false);
-				updateUI();			
+					
 			}
 		});
 	}

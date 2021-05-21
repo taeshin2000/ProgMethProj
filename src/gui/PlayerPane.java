@@ -78,9 +78,13 @@ public class PlayerPane extends Pane{
 			}
 			if(GameController.player1.getHaveProtectionCard()) {
 				Main.player1Pane.playerItem.textProperty().setValue("item : Protection");
+			}else {
+				Main.player1Pane.playerItem.textProperty().setValue("item : ");
 			}
 			if(GameController.player2.getHaveProtectionCard()) {
 				Main.player2Pane.playerItem.textProperty().setValue("item : Protection");
+			}else {
+				Main.player2Pane.playerItem.textProperty().setValue("item : ");
 			}
 		});
 		
