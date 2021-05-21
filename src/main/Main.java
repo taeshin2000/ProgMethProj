@@ -65,11 +65,12 @@ public class Main extends Application {
 
 		Pane startingGame = new Pane();
 		Scene scene = new Scene(startingGame, 1200, 800);
-		primaryStage.setTitle("Let's get rich in chula");
+		primaryStage.setTitle("Let's Get Rich In Chula");
+		primaryStage.getIcons().add(new Image(ClassLoader.getSystemResourceAsStream("ico.png")));
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		startingGame.setBackground(new Background(
-				new BackgroundImage(new Image("/MainMenuBG.png", 1200, 800, false, true), BackgroundRepeat.NO_REPEAT,
+				new BackgroundImage(new Image(ClassLoader.getSystemResourceAsStream("MainMenuBG.png"), 1200, 800, false, true), BackgroundRepeat.NO_REPEAT,
 						BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
 
 		TextField player1Name = new TextField("Input player1 name and press enter!");
@@ -83,6 +84,7 @@ public class Main extends Application {
 		player2Name.setLayoutX(800);
 		player2Name.setLayoutY(500);
 		player2Name.setDisable(true);
+		
 		player1Name.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent mouseEvent) {
@@ -107,6 +109,7 @@ public class Main extends Application {
 				}
 			}
 		});
+		
 		player2Name.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent mouseEvent) {
@@ -129,7 +132,6 @@ public class Main extends Application {
 					GameController.initilizeGame();
 					primaryStage.setScene(createGameScene());
 					primaryStage.show();
-
 				}
 			}
 		});
@@ -147,7 +149,7 @@ public class Main extends Application {
 		gamePane = new Pane();
 		gamePane.setPrefSize(1200, 800);
 		gamePane.setBackground(new Background(
-				new BackgroundImage(new Image("/BG.png", 1200, 800, false, true), BackgroundRepeat.NO_REPEAT,
+				new BackgroundImage(new Image(ClassLoader.getSystemResourceAsStream("BG.png"), 1200, 800, false, true), BackgroundRepeat.NO_REPEAT,
 						BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
 		Scene gameScene = new Scene(gamePane, 1200, 800);
 		
@@ -190,7 +192,6 @@ public class Main extends Application {
 			gamePane.getChildren().add(pane);
 		}
 		
-
 		player1Pane.updatePlayerPaneScreen();
 		player2Pane.updatePlayerPaneScreen();
 		mainPane.updateMainPaneScreen();

@@ -53,13 +53,13 @@ public class PlayerPane extends Pane{
 			this.playerName.textProperty().setValue(GameController.player1.getName());
 			this.playerMoney.textProperty().setValue(Integer.toString(GameController.player1.getMoney()));
 			this.setBackground(new Background(new BackgroundImage(
-	                new Image("/Player1_BG.png", 258, 153, false, true), BackgroundRepeat.NO_REPEAT,
+	                new Image(ClassLoader.getSystemResourceAsStream("Player1_BG.png"), 258, 153, false, true), BackgroundRepeat.NO_REPEAT,
 	                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
 		}else {
 			this.playerName.textProperty().setValue(GameController.player2.getName());
 			this.playerMoney.textProperty().setValue(Integer.toString(GameController.player2.getMoney()));
 			this.setBackground(new Background(new BackgroundImage(
-	                new Image("/Player2_BG.png", 258, 153, false, true), BackgroundRepeat.NO_REPEAT,
+	                new Image(ClassLoader.getSystemResourceAsStream("Player2_BG.png"), 258, 153, false, true), BackgroundRepeat.NO_REPEAT,
 	                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
 		}
 		

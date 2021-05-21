@@ -84,9 +84,9 @@ public class DicePane extends VBox {
 
 	public void updateDiceImage(int step) {
 		// TODO Auto-generated method stub
-		String url = "/dice/" + step + ".png";
+		String url = "dice/" + step + ".png";
 		diceImage.setBackground(
-				new Background(new BackgroundImage(new Image(url, 100, 100, false, true), BackgroundRepeat.NO_REPEAT,
+				new Background(new BackgroundImage(new Image(ClassLoader.getSystemResourceAsStream(url), 100, 100, false, true), BackgroundRepeat.NO_REPEAT,
 						BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
 		diceImage.setPrefHeight(100);
 		diceImage.setPrefWidth(100);
