@@ -43,7 +43,6 @@ public class Turn {
 	}
 
 	public void action(InitialBoard board, Player player1, Player player2, boolean gameOver, int winner) {
-		Scanner scanner = new Scanner(System.in);
 		if (board.getTile(currentPlayer.getPosition()) instanceof LocationTile) {
 			if (((LocationTile) (board.getTile(currentPlayer.getPosition()))).getOwner() == 0) {
 				buyLocation(board);
@@ -181,20 +180,8 @@ public class Turn {
 		Main.transferButton.setVisible(true);
 	
 	}
-
-	public void checkSpacialWin(InitialBoard board, Player player1, Player player2, boolean gameOver, int winner) {
-		if ((currentPlayer.getSpacialLocationList()).size() == 3) {
-			GameController.setGameOver(true);
-			if (currentPlayer.getPlayerNumber() == 1) {
-				GameController.setWinner(1);
-			}else {
-				GameController.setWinner(2);
-			}
-		}
 		
 		
-		
-	}
 
 	public boolean skipNextTurn(Player player) {
 		if ( player.getPosition() == 6) {

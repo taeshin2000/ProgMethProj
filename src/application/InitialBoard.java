@@ -69,11 +69,6 @@ public class InitialBoard {
 	public void increaseLocationPrice(int index) {
 		((NormalLocationTile)(this.tileList.get(index))).increasePrice();
 	}
-
-	public void doubleFallPrice(int index) {
-		((NormalLocationTile)(this.tileList.get(index))).increaseFallPrice();
-		
-	}
 	
 	public ArrayList<Tile> getTileList(){
 		return this.tileList;
