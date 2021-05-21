@@ -4,8 +4,10 @@ import application.GameController;
 import main.Main;
 
 public class CheckEndGame {
+	
+	
 	public static void checkEndGame() {
-		if (GameController.turnCount == 30) {
+		if (GameController.turnCount == GameController.getMaxGameTurn()) {
 			Main.dicePane.getRollButton().setDisable(true);
 			int p1Asset = GameController.player1.totalAsset();
 			int p2Asset = GameController.player2.totalAsset();
@@ -25,5 +27,9 @@ public class CheckEndGame {
 				Main.p2WinPane.setVisible(true);
 			}
 		}
+
+
+	
+	
 	}
 
