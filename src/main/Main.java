@@ -1,5 +1,7 @@
 package main;
 
+import java.util.ArrayList;
+
 import application.GameController;
 import gui.DicePane;
 import gui.MainPane;
@@ -31,6 +33,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -129,7 +132,6 @@ public class Main extends Application {
 
 				}
 			}
-
 		});
 		startingGame.getChildren().addAll(player1Name, player2Name);
 
@@ -165,75 +167,34 @@ public class Main extends Application {
 		mainPane = new MainPane();
 		mainPane.setLayoutX(80);
 		mainPane.setLayoutY(50);
+		gamePane.getChildren().addAll(player1Pane, player2Pane, dicePane, mainPane);
+		
+		ArrayList<VBox> list = new ArrayList<VBox>();	
+		list.add(buyButton = new BuyBtn());
+		list.add(upgradeButton = new UpgradeBtn());     
+		list.add(transferButton = new TransferBtn());   
+		list.add(getItemPane = new GetItemPane());      
+		list.add(loseMoneyButton = new LoseMoneyPane());
+		list.add(drunkPane = new DrunkPane());
+		list.add(aPane = new APane());
+		list.add(tiePane = new TiePane());
+		list.add(p1WinPane = new P1WinPane());
+		list.add(p2WinPane = new P2WinPane());
+		list.add(jailPane = new JailPane());
+		list.add(startPane = new StartPane());
 
-		buyButton = new BuyBtn();
-		buyButton.setLayoutX(228);
-		buyButton.setLayoutY(300);
-		buyButton.setVisible(false);
-
-		upgradeButton = new UpgradeBtn();
-		upgradeButton.setLayoutX(228);
-		upgradeButton.setLayoutY(300);
-		upgradeButton.setVisible(false);
-
-		transferButton = new TransferBtn();
-		transferButton.setLayoutX(228);
-		transferButton.setLayoutY(300);
-		transferButton.setVisible(false);
-
-		getItemPane = new GetItemPane();
-		getItemPane.setLayoutX(228);
-		getItemPane.setLayoutY(300);
-		getItemPane.setVisible(false);
-		
-		loseMoneyButton = new LoseMoneyPane();
-		loseMoneyButton.setLayoutX(228);
-		loseMoneyButton.setLayoutY(300);
-		loseMoneyButton.setVisible(false);
-		
-		drunkPane = new DrunkPane();
-		drunkPane.setLayoutX(228);
-		drunkPane.setLayoutY(300);
-		drunkPane.setVisible(false);
-		
-		aPane = new APane();
-		aPane.setLayoutX(228);
-		aPane.setLayoutY(300);
-		aPane.setVisible(false);
-		
-		tiePane = new TiePane();
-		tiePane.setLayoutX(228);
-		tiePane.setLayoutY(300);
-		tiePane.setVisible(false);
-		
-		p1WinPane = new P1WinPane();
-		p1WinPane.setLayoutX(228);
-		p1WinPane.setLayoutY(300);
-		p1WinPane.setVisible(false);
-		
-		p2WinPane = new P2WinPane();
-		p2WinPane.setLayoutX(228);
-		p2WinPane.setLayoutY(300);
-		p2WinPane.setVisible(false);
-		
-		// TODO : newly added, not functioning yet.
-		jailPane = new JailPane();
-		jailPane.setLayoutX(228);
-		jailPane.setLayoutY(300);
-		jailPane.setVisible(false);
-		
-		startPane = new StartPane();
-		startPane.setLayoutX(228);
-		startPane.setLayoutY(300);
-		startPane.setVisible(false);
+		for (VBox pane : list) {
+			pane.setLayoutX(228);
+			pane.setLayoutY(300);
+			pane.setVisible(false);
+			gamePane.getChildren().add(pane);
+		}
 		
 
 		player1Pane.updatePlayerPaneScreen();
 		player2Pane.updatePlayerPaneScreen();
 		mainPane.updateMainPaneScreen();
-		gamePane.getChildren().addAll(player1Pane, player2Pane, dicePane, mainPane, buyButton, upgradeButton,
-				transferButton, getItemPane,loseMoneyButton,drunkPane,aPane,tiePane,p1WinPane,p2WinPane
-				,jailPane,startPane);
+		
 		return gameScene;
 
 	}
