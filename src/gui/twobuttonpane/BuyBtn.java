@@ -1,4 +1,4 @@
-package gui;
+package gui.twobuttonpane;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -22,30 +22,14 @@ import application.GameController;
 import logic.Turn;
 import main.Main;
 
-public class BuyBtn extends VBox {
-	private Text buyText;
-	private Button buyButton;
-	private Button noButton;
+public class BuyBtn extends Base_TwoButtonPane {
+	
 
 	public BuyBtn() {
-		// TODO Auto-generated constructor stub
-		this.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, null, null)));
-		this.setAlignment(Pos.CENTER);
-		this.setSpacing(20);
-		this.setPrefSize(400, 200);
-		this.buyButton = new Button("Yes");
-		buyButton.setPrefSize(100, 50);
-		buyButton.setFont(new Font(20));
-
-		this.noButton = new Button("No");
-		noButton.setPrefSize(100, 50);
-		noButton.setFont(new Font(20));
-		buyText = new Text();
-		buyText.setFont(new Font(20));
-		buyText.setText("Do you want to buy this location?");
-		this.getChildren().addAll(buyText, buyButton, noButton);
-
-		buyButton.setOnAction(new EventHandler<ActionEvent>() {
+		super();
+		super.setDisplayText("Do you want to buy this location?");
+	
+		super.getInteractButton().setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent arg0) {
@@ -123,7 +107,7 @@ public class BuyBtn extends VBox {
 				.getTile(GameController.turn.getCurrentPlayer().getPosition()));
 		int buyPrice = tile.getBuyPrice();
 		Platform.runLater(()->{
-			buyButton.setText(Integer.toString(buyPrice));
+			super.getInteractButton().setText(Integer.toString(buyPrice));
 		});
 		
 

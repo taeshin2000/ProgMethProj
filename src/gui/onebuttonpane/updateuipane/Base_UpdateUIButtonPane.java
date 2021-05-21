@@ -1,33 +1,29 @@
-package tile;
+package gui.onebuttonpane.updateuipane;
 
 import application.GameController;
-import application.InitialBoard;
-import logic.Player;
+import gui.onebuttonpane.Base_OneButtonPane;
+import javafx.scene.paint.Color;
 import main.Main;
 
-public class StartTile extends SpacialTile {
-	
-	public StartTile(String name,int position) {
-		super(name,position);
-		
+public abstract class Base_UpdateUIButtonPane extends Base_OneButtonPane{
+
+	public Base_UpdateUIButtonPane(String display, Color bgColor) {
+		super(display, bgColor);
 	}
-	@Override
-	public void interact(Player player,InitialBoard board) {
-		// TODO Auto-generated method stub
-		Main.startPane.setVisible(true);
+
+	public void updateUI() {
+		Main.dicePane.getRollButton().setDisable(false);
 		Main.player1Pane.updatePlayerPane(1);
 		Main.player2Pane.updatePlayerPane(2);
 		GameController.increaseTurnCount();
+		Main.dicePane.updateDicePaneScreen();
 		if (!Main.skipTurn) {
 			GameController.turn.changeCurrentPlayer(GameController.player1, GameController.player2);
 			Main.player1Pane.updatePlayerPaneScreen();
 			Main.player2Pane.updatePlayerPaneScreen();
-			
-		}else {
+
+		} else {
 			Main.skipTurn = false;
 		}
-		Main.dicePane.getRollButton().setDisable(false);
-		
 	}
-
 }

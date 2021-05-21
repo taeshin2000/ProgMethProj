@@ -1,4 +1,4 @@
-package gui;
+package gui.twobuttonpane;
 
 import application.GameController;
 import javafx.application.Platform;
@@ -16,30 +16,13 @@ import main.Main;
 import tile.LocationTile;
 import tile.NormalLocationTile;
 
-public class TransferBtn extends VBox {
-	private Text transferText;
-	private Button transferButton;
-	private Button noButton;
+public class TransferBtn extends Base_TwoButtonPane {
+	
 	public TransferBtn() {
-		// TODO Auto-generated constructor stub
-		this.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, null, null)));
-		this.setAlignment(Pos.CENTER);
-		this.setSpacing(20);
-		this.setPrefSize(400, 300);
+		super();
+		super.setDisplayText("Do you want to transfer this location to you?");
 		
-		this.transferButton = new Button("Yes");
-		transferButton.setPrefSize(100, 50);
-		transferButton.setFont(new Font(20));
-		
-		this.noButton = new Button("No");
-		noButton.setPrefSize(100, 50);
-		noButton.setFont(new Font(20));
-		
-		transferText = new Text();
-		transferText.setFont(new Font(20));
-		transferText.setText("Do you want to transfer this location to you?");
-		
-		transferButton.setOnAction(new EventHandler<ActionEvent>() {
+		super.getInteractButton().setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
 			public void handle(ActionEvent arg0) {
@@ -105,7 +88,6 @@ public class TransferBtn extends VBox {
 			}
 		});
 		
-		this.getChildren().addAll(transferText,transferButton,noButton);
 		
 		
 	}
@@ -114,7 +96,7 @@ public class TransferBtn extends VBox {
 		NormalLocationTile tile = (NormalLocationTile) (GameController.board.getTile(GameController.turn.getCurrentPlayer().getPosition()));
 		int transferPrice = tile.getTransferPrice();
 		Platform.runLater(()->{
-			transferButton.setText(Integer.toString(transferPrice));
+			super.setInteractButtonText(Integer.toString(transferPrice));
 		});
 		
 		

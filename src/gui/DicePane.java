@@ -44,6 +44,8 @@ public class DicePane extends VBox {
 			public void handle(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				Thread t1 = new Thread(()->{
+					rollButton.setDisable(true);
+					
 					
 					int step = GameController.turn.rollDice();
 					updateDiceImage(step);
@@ -55,7 +57,7 @@ public class DicePane extends VBox {
 					Main.player2Pane.updatePlayerPane(2);
 					(GameController.turn.getCurrentPlayer()).move(step);
 					Main.mainPane.updateMainPaneScreen();
-					rollButton.setDisable(true);
+					
 					try {
 						Thread.sleep(30);
 					} catch (InterruptedException e) {
@@ -74,7 +76,7 @@ public class DicePane extends VBox {
 		this.turnCount = new Text();
 		this.turnCount.setFont(new Font(30));
 		this.turnCount.setFill(Color.WHITE);
-		this.turnCount.textProperty().setValue("Turn count : " + Integer.toString(GameController.turnCount));
+		updateDicePaneScreen();
 		this.setSpacing(20);
 		this.setAlignment(Pos.CENTER);
 		this.getChildren().addAll(turnCount, diceImage, rollButton);
@@ -92,7 +94,7 @@ public class DicePane extends VBox {
 	}
 	
 	public void updateDicePaneScreen() {
-		this.turnCount.setText("Turn count : " + Integer.toString(GameController.turnCount));
+		this.turnCount.setText("Turn count : " + Integer.toString(GameController.turnCount) + "/"+ GameController.getMaxGameTurn());
 	}
 	
 	public Button getRollButton() {

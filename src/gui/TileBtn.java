@@ -24,13 +24,13 @@ import tile.NormalLocationTile;
 import tile.StartTile;
 import tile.Tile;
 
-public class Tilebtn extends Pane {
+public class TileBtn extends Pane {
 	private Tile tile;
 	private Text buyPriceText;
 	private Text nameText;
 	private int owner;
 
-	public Tilebtn(Tile tile) {
+	public TileBtn(Tile tile) {
 		// TODO Auto-generated constructor stub
 		this.tile = tile;
 		this.setPrefSize(100, 100);

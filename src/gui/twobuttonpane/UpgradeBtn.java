@@ -1,4 +1,4 @@
-package gui;
+package gui.twobuttonpane;
 
 import application.GameController;
 import javafx.application.Platform;
@@ -16,29 +16,13 @@ import main.Main;
 import tile.LocationTile;
 import tile.NormalLocationTile;
 
-public class UpgradeBtn extends VBox {
-	private	Text upgradeText;
-	private Button upgradeButton;
-	private Button noButton;
+public class UpgradeBtn extends Base_TwoButtonPane {
+	
 	public UpgradeBtn() {
-		// TODO Auto-generated constructor stub
-		this.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, null, null)));
-		this.setAlignment(Pos.CENTER);
-		this.setSpacing(20);
-		this.setPrefSize(400, 200);
-		this.upgradeButton = new Button("Yes");
-		upgradeButton.setPrefSize(100, 50);
-		upgradeButton.setFont(new Font(20));
-		
-		this.noButton = new Button("No");
-		noButton.setPrefSize(100, 50);
-		noButton.setFont(new Font(20));
-		upgradeText = new Text();
-		upgradeText.setFont(new Font(20));
-		upgradeText.setText("Do you want to upgrade this location?");
-		this.getChildren().addAll(upgradeText,upgradeButton,noButton);
-		
-		upgradeButton.setOnAction(new EventHandler<ActionEvent>() {
+		super();
+		super.setDisplayText("Do you want to upgrade this location?");
+				
+		super.getInteractButton().setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
 			public void handle(ActionEvent arg0) {
@@ -95,7 +79,7 @@ public class UpgradeBtn extends VBox {
 		NormalLocationTile tile = (NormalLocationTile) (GameController.board.getTile(GameController.turn.getCurrentPlayer().getPosition()));
 		int upgradePrice = tile.getUpgradePrice();
 		Platform.runLater(()->{
-			upgradeButton.setText(Integer.toString(upgradePrice));
+			super.setInteractButtonText(Integer.toString(upgradePrice));
 		});
 		
 	}

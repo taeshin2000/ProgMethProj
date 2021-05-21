@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.ArrayList;
 import application.InitialBoard;
-import gui.BuyBtn;
+import gui.twobuttonpane.BuyBtn;
 import main.Main;
 import application.GameController;
 import tile.JailTile;

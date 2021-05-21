@@ -15,7 +15,7 @@ import javafx.scene.paint.Color;
 import tile.Tile;
 
 public class MainPane extends Pane{
-	private ObservableList<Tilebtn> TileBtnList = FXCollections.observableArrayList();
+	private ObservableList<TileBtn> TileBtnList = FXCollections.observableArrayList();
 	
 	
 	public MainPane() {
@@ -24,8 +24,8 @@ public class MainPane extends Pane{
 		this.setBackground(new Background(new BackgroundFill(Color.PINK, null	, null)));
 		TileBtnList = FXCollections.observableArrayList();
 		for( Tile e : GameController.board.getTileList()) {
-			Tilebtn tilebtn = new Tilebtn(e);
-			TileBtnList.add(tilebtn);
+			TileBtn tileBtn = new TileBtn(e);
+			TileBtnList.add(tileBtn);
 		}
 		setPosition();
 	}
@@ -242,7 +242,7 @@ public class MainPane extends Pane{
 		}
 	}
 	
-	public ObservableList<Tilebtn> getTileBtnList(){
+	public ObservableList<TileBtn> getTileBtnList(){
 		return this.TileBtnList;
 	}
 }

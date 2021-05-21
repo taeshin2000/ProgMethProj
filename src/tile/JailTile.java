@@ -14,6 +14,7 @@ public class JailTile extends SpacialTile {
 
 	@Override
 	public void interact(Player player,InitialBoard board) {
+		Main.jailPane.setVisible(true);
 		GameController.turn.changeCurrentPlayer(GameController.player1, GameController.player2);
 		Main.skipTurn = true;
 		Main.player1Pane.updatePlayerPaneScreen();

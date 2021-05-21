@@ -1,19 +1,21 @@
 package main;
 
 import application.GameController;
-import gui.APane;
-import gui.BuyBtn;
 import gui.DicePane;
-import gui.DrunkPane;
-import gui.GetItemPane;
-import gui.LoseMoneybtn;
 import gui.MainPane;
-import gui.P1WinPane;
-import gui.P2WinPane;
 import gui.PlayerPane;
-import gui.TiePane;
-import gui.TransferBtn;
-import gui.UpgradeBtn;
+import gui.onebuttonpane.exitgamepane.P1WinPane;
+import gui.onebuttonpane.exitgamepane.P2WinPane;
+import gui.onebuttonpane.exitgamepane.TiePane;
+import gui.onebuttonpane.updateuipane.APane;
+import gui.onebuttonpane.updateuipane.DrunkPane;
+import gui.onebuttonpane.updateuipane.GetItemPane;
+import gui.onebuttonpane.updateuipane.JailPane;
+import gui.onebuttonpane.updateuipane.LoseMoneyPane;
+import gui.onebuttonpane.updateuipane.StartPane;
+import gui.twobuttonpane.BuyBtn;
+import gui.twobuttonpane.TransferBtn;
+import gui.twobuttonpane.UpgradeBtn;
 import javafx.animation.Animation;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -44,7 +46,7 @@ public class Main extends Application {
 	public static UpgradeBtn upgradeButton;
 	public static TransferBtn transferButton;
 	public static GetItemPane getItemPane;
-	public static LoseMoneybtn loseMoneyButton;
+	public static LoseMoneyPane loseMoneyButton;
 	public static boolean skipTurn = false;
 	public static DrunkPane drunkPane;
 	public static APane aPane;
@@ -52,6 +54,9 @@ public class Main extends Application {
 	public static P1WinPane p1WinPane;
 	public static P2WinPane p2WinPane;
 	public static MediaPlayer mediaPlayer;
+	
+	public static JailPane jailPane;
+	public static StartPane startPane;
 
 	public void start(Stage primaryStage) {
 
@@ -143,6 +148,8 @@ public class Main extends Application {
 				new BackgroundImage(new Image("/BG.png", 1200, 800, false, true), BackgroundRepeat.NO_REPEAT,
 						BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
 		Scene gameScene = new Scene(gamePane, 1200, 800);
+		
+		
 		player1Pane = new PlayerPane(1);
 		player1Pane.setLayoutX(900);
 		player1Pane.setLayoutY(100);
@@ -179,7 +186,7 @@ public class Main extends Application {
 		getItemPane.setLayoutY(300);
 		getItemPane.setVisible(false);
 		
-		loseMoneyButton = new LoseMoneybtn();
+		loseMoneyButton = new LoseMoneyPane();
 		loseMoneyButton.setLayoutX(228);
 		loseMoneyButton.setLayoutY(300);
 		loseMoneyButton.setVisible(false);
@@ -209,14 +216,24 @@ public class Main extends Application {
 		p2WinPane.setLayoutY(300);
 		p2WinPane.setVisible(false);
 		
+		// TODO : newly added, not functioning yet.
+		jailPane = new JailPane();
+		jailPane.setLayoutX(228);
+		jailPane.setLayoutY(300);
+		jailPane.setVisible(false);
 		
+		startPane = new StartPane();
+		startPane.setLayoutX(228);
+		startPane.setLayoutY(300);
+		startPane.setVisible(false);
 		
 
 		player1Pane.updatePlayerPaneScreen();
 		player2Pane.updatePlayerPaneScreen();
 		mainPane.updateMainPaneScreen();
 		gamePane.getChildren().addAll(player1Pane, player2Pane, dicePane, mainPane, buyButton, upgradeButton,
-				transferButton, getItemPane,loseMoneyButton,drunkPane,aPane,tiePane,p1WinPane,p2WinPane);
+				transferButton, getItemPane,loseMoneyButton,drunkPane,aPane,tiePane,p1WinPane,p2WinPane
+				,jailPane,startPane);
 		return gameScene;
 
 	}

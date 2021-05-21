@@ -1,6 +1,6 @@
 package itemcard;
 
-import gui.GetItemPane;
+import gui.onebuttonpane.updateuipane.GetItemPane;
 import logic.Player;
 import main.Main;
 
