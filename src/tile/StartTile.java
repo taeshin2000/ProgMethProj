@@ -1,11 +1,10 @@
 package tile;
 
-import application.GameController;
 import application.InitialBoard;
 import logic.Player;
 import main.Main;
 
-public class StartTile extends SpacialTile {
+public class StartTile extends SpecialTile {
 	
 	public StartTile(String name,int position) {
 		super(name,position);

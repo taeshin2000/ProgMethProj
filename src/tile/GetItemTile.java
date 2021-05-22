@@ -13,7 +13,7 @@ import itemcard.UseLaterCard;
 import logic.Player;
 import main.Main;
 
-public class GetItemTile extends SpacialTile {
+public class GetItemTile extends SpecialTile {
 
 	private ItemList items = new ItemList();
 

@@ -3,9 +3,9 @@ package tile;
 import application.InitialBoard;
 import logic.Player;
 
-public class SpacialTile extends Tile implements Interactable {
+public class SpecialTile extends Tile implements Interactable {
 
-	public SpacialTile(String name, int position) {
+	public SpecialTile(String name, int position) {
 		super(name, position);
 		// TODO Auto-generated constructor stub
 	}

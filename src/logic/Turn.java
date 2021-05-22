@@ -10,7 +10,7 @@ import application.GameController;
 import tile.JailTile;
 import tile.LocationTile;
 import tile.NormalLocationTile;
-import tile.SpacialTile;
+import tile.SpecialTile;
 import tile.DrunkTile;
 import tile.GetItemTile;
 import tile.IslandLocationTile;
@@ -141,7 +141,7 @@ public class Turn {
 			}
 		}
 		else {
-			((SpacialTile) board.getTile(currentPlayer.getPosition())).interact(currentPlayer,board);
+			((SpecialTile) board.getTile(currentPlayer.getPosition())).interact(currentPlayer,board);
 		}
 	}
 

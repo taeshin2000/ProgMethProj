@@ -8,7 +8,7 @@ import application.InitialBoard;
 import logic.Player;
 import main.Main;
 
-public class DrunkTile extends SpacialTile {
+public class DrunkTile extends SpecialTile {
 	
 	public DrunkTile(String name,int position) {
 		super(name,position);

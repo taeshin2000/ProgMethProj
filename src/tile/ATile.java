@@ -7,7 +7,7 @@ import application.InitialBoard;
 import logic.Player;
 import main.Main;
 
-public class ATile extends SpacialTile {
+public class ATile extends SpecialTile {
 	public ATile(String name,int position) {
 		super(name,position);
 	}

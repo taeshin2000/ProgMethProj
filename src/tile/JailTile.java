@@ -5,7 +5,7 @@ import application.InitialBoard;
 import logic.Player;
 import main.Main;
 
-public class JailTile extends SpacialTile {
+public class JailTile extends SpecialTile {
 
 	public JailTile(String name,int position) {
 		super(name,position);
