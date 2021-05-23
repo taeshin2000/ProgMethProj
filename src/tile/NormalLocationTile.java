@@ -37,10 +37,6 @@ public class NormalLocationTile extends LocationTile  {
 		return this.transferPrice;
 	}
 
-	public void increaseFallPrice() {
-		this.setFallPrice(this.getFallPrice()*2);
-		
-	}
 	
 	
 
